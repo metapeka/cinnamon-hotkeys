@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="ru" data-style="cards" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#f4f2ee">
+<title>Cinnamon · Навигация на клавиатуре</title>
+<style>
+:root{--bg:#f4f2ee;--card:#ffffff;--ink:#1d1d1f;--mut:#6b665f;--line:#e2ded7;--soft:#faf8f5;--warn:#d9a41a;--acc:#1d1d1f}
+[data-theme="dark"]{--bg:#0f0f10;--card:#1c1c1e;--ink:#f2f2f7;--mut:#98989f;--line:#333;--soft:#242426;--warn:#e0b446;--acc:#f2f2f7}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",Arial,sans-serif;
+  color:var(--ink);background:var(--bg);font-size:16px;line-height:1.62;-webkit-text-size-adjust:100%}
+.wrap{max-width:860px;margin:0 auto;padding:0 12px 90px}
+
+/* ---- sticky bar: chips + theme toggle ---- */
+.bar{position:sticky;top:0;z-index:50;background:var(--bg);border-bottom:1px solid var(--line)}
+.chips{display:flex;gap:7px;overflow-x:auto;padding:9px 12px 8px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.chips::-webkit-scrollbar{display:none}
+.chip{flex:0 0 auto;padding:7px 13px;border-radius:999px;background:var(--soft);border:1px solid var(--line);
+  color:var(--mut);font-size:13px;font-weight:600;text-decoration:none;white-space:nowrap}
+.chip:active{background:var(--card)}
+.switches{display:flex;gap:8px;padding:0 12px 9px;align-items:center}
+.seg{display:flex;background:var(--soft);border:1px solid var(--line);border-radius:10px;padding:3px;gap:2px}
+.seg button{border:0;background:transparent;color:var(--mut);font-size:12px;font-weight:600;
+  padding:6px 10px;border-radius:7px;font-family:inherit;cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--card);color:var(--ink);box-shadow:0 1px 2px rgba(0,0,0,.12)}
+.seg .dot{margin-left:auto;display:flex;gap:6px}
+.hint{font-size:12px;color:var(--mut);padding:0 12px8px;letter-spacing:.02em}
+.hint b{color:var(--ink);font-weight:600}
+
+/* ---- hero ---- */
+.hero{padding:24px 0 6px}
+.hero .k{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--mut);font-weight:600}
+.hero h1{font-size:28px;line-height:1.2;margin:9px 0 0;letter-spacing:-.02em}
+.hero p{color:var(--mut);font-size:14.5px;margin:9px 0 0;max-width:72ch}
+.meta{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px}
+.meta span{font-size:12px;background:var(--soft);border:1px solid var(--line);border-radius:999px;
+  padding:4px 12px;color:var(--mut);font-weight:600}
+.meta b{color:var(--ink);font-weight:700;font-family:ui-monospace,"SF Mono",Consolas,monospace}
+
+/* ---- section cards ---- */
+.sec{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px 22px;
+  margin:14px 0;box-shadow:0 1px 2px rgba(0,0,0,.05);scroll-margin-top:74px}
+[data-theme="dark"] .sec{box-shadow:none}
+h2{font-size:19px;margin:0 0 4px;letter-spacing:-.01em;display:flex;align-items:center;gap:10px}
+h2::before{content:attr(data-n);font-size:12px;background:var(--acc);color:var(--bg);
+  width:24px;height:24px;border-radius:7px;display:inline-flex;align-items:center;justify-content:center;
+  flex:0 0 24px;font-weight:700;font-family:ui-monospace,"SF Mono",Consolas,monospace}
+h2 .tag{margin-left:auto;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--mut);
+  border:1px solid var(--line);border-radius:999px;padding:3px 10px;font-weight:600}
+p.lead{color:var(--mut);font-size:14.5px;margin:0 0 12px}
+h3{font-size:15px;margin:20px 08px;letter-spacing:-.01em}
+
+/* ---- tables ---- */
+table{width:100%;border-collapse:collapse;margin:10px 0;font-size:14px}
+th,td{padding:10px 12px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-size:11px;text-transform:uppercase;letter-spacing:.04em;color:var(--mut);font-weight:650}
+tr:last-child td{border-bottom:none}
+td.d{color:var(--ink)}
+tr.group td{background:var(--soft);font-weight:700;color:var(--ink)}
+.kbd{font-family:ui-monospace,"SF Mono",Consolas,monospace;font-size:13px;font-weight:650;
+  color:var(--acc);background:var(--soft);border:1px solid var(--line);border-radius:6px;
+  padding:2px 8px;white-space:nowrap}
+code{font-family:ui-monospace,"SF Mono",Consolas,monospace;font-size:12.5px;color:var(--ink);
+  background:var(--soft);border:1px solid var(--line);border-radius:6px;padding:2px 8px}
+
+/* ---- workflow steps ---- */
+.flow{display:flex;flex-direction:column;gap:0;margin:14px 0}
+.node{background:var(--soft);border:1px solid var(--line);border-radius:11px;padding:12px 14px;font-size:14px}
+.node b{display:block;font-size:13px;margin-bottom:2px}
+.node .kbd{font-size:12.5px}
+.arrow{text-align:center;color:var(--mut);font-size:15px;line-height:1.1;padding:3px 0}
+
+/* ---- callout ---- */
+.note{background:var(--soft);border:1px solid var(--line);border-left:3px solid var(--warn);
+  border-radius:0 10px 10px 0;padding:12px 14px;font-size:14px;margin:13px 0;color:var(--ink)}
+.note b{color:var(--warn)}
+
+ul,ol{padding-left:20px;margin:8px 0}
+li{margin:4px 0}
+.foot{margin-top:34px;padding-top:16px;border-top:1px solid var(--line);color:var(--mut);font-size:12.5px}
+
+@media(max-width:420px){body{font-size:15.5px}.hero h1{font-size:23px}}
+</style>
+</head>
+<body>
+<div class="bar">
+  <div class="chips">
+    <a class="chip" href="#o1">Окна</a><a class="chip" href="#o2">Разметка</a><a class="chip" href="#o3">Столы</a>
+    <a class="chip" href="#o4">Запуск</a><a class="chip" href="#o5">Workflow</a><a class="chip" href="#o6">Редактор</a>
+    <a class="chip" href="#o7">Скролл</a><a class="chip" href="#o8">Скриншоты</a><a class="chip" href="#o9">Настроить</a>
+  </div>
+  <div class="switches">
+    <div class="hint" style="padding:0 6px 00">светлая / тёмная</div>
+    <div class="seg" role="group" aria-label="Тема">
+      <button data-t="light" aria-pressed="true">☀︎</button>
+      <button data-t="dark" aria-pressed="false">☾</button>
+    </div>
+  </div>
+  <div class="hint">Дизайн — оформление «карточки» из репозитория <b>memory · npotehin</b>. Значения сняты с живой системы через <code>gsettings</code>.</div>
+</div>
+
+<div class="wrap">
+<div class="hero">
+  <div class="k">Справочник · версия1</div>
+  <h1>Навигация на клавиатуре в Cinnamon</h1>
+  <p>Все сочетания сняты с живой системы (Debian 13 «trixie», Cinnamon 6.4.1, X11) через <code>gsettings</code>, а не из общих списков. Клавиша <b>Super</b> — это «Windows»/Meta. Цель — чтобы для повседневной работы мышь не понадобилась.</p>
+  <div class="meta">
+    <span>Терминал: <b>gnome-terminal</b></span>
+    <span>Раскладка: <b>Alt+Shift</b></span>
+    <span>Сессия: <b>lightdm-xsession</b></span>
+  </div>
+</div>
+
+<div class="sec" id="o1">
+  <h2 data-n="1">Окна: переключение между терминалом и редактором <span class="tag">главное</span></h2>
+  <p class="lead">Пишешь код в терминале → смотришь результат в редакторе → возвращаешься. Одна рука, без мыши.</p>
+  <table>
+    <tr><th>Действие</th><th>Сочетание</th><th>Примечание</th></tr>
+    <tr><td class="d">Переключение окон (Alt-Tab)</td><td><span class="kbd">Alt+Tab</span></td><td class="d">Отпусти сразу — предыдущее окно. Удерживай и веди Tab для перебора.</td></tr>
+    <tr><td class="d">В обратном порядке</td><td><span class="kbd">Shift+Alt+Tab</span></td><td class="d"></td></tr>
+    <tr><td class="d">Только окна текущего стола</td><td><span class="kbd">Ctrl+Alt+Tab</span></td><td class="d">Не трогает панели и апплеты.</td></tr>
+    <tr><td class="d">Свернуть окно</td><td><span class="kbd">Super+h</span></td><td class="d"></td></tr>
+    <tr><td class="d">Развернуть / вернуть размер</td><td><span class="kbd">Alt+F10</span> / <span class="kbd">Alt+F5</span></td><td class="d">Вернуть размер также <span class="kbd">Super+↓</span>.</td></tr>
+    <tr><td class="d">Закрыть окно</td><td><span class="kbd">Alt+F4</span></td><td class="d"></td></tr>
+  </table>
+</div>
+
+<div class="sec" id="o2">
+  <h2 data-n="2">Разложить терминал и редактор на пол-экрана <span class="tag">разметка</span></h2>
+  <p class="lead">Не переключайся между окнами — поставь их рядом. Взгляд перескакивает сам, фокус наводишь клавишей.</p>
+  <table>
+    <tr><th>Действие</th><th>Сочетание</th><th>Примечание</th></tr>
+    <tr class="group"><td colspan="3">Причаливание (tile) и размеры</td></tr>
+    <tr><td class="d">Слева / справа — половина экрана</td><td><span class="kbd">Super+←</span> / <span class="kbd">Super+→</span></td><td class="d">То же в muffin (оконный менеджер).</td></tr>
+    <tr><td class="d">Развернуть / восстановить</td><td><span class="kbd">Super+↑</span> / <span class="kbd">Super+↓</span></td><td class="d">Super+↓ = unmaximize.</td></tr>
+    <tr><td class="d">Скрыть все окна (рабочий стол)</td><td><span class="kbd">Super+d</span></td><td class="d">Повтор — вернуть окна.</td></tr>
+    <tr><td class="d">Окно на соседний монитор</td><td><span class="kbd">Super+Shift+←/→/↑/↓</span></td><td class="d"></td></tr>
+    <tr><td class="d">Меню окна / переместить / размер</td><td><span class="kbd">Alt+Space</span> / <span class="kbd">Alt+F7</span> / <span class="kbd">Alt+F8</span></td><td class="d">Стрелки двигают, Enter отпускает.</td></tr>
+  </table>
+</div>
+
+<div class="sec" id="o3">
+  <h2 data-n="3">Виртуальные рабочие столы <span class="tag">workspaces</span></h2>
+  <p class="lead">Терминал на одном столе, редактор на другом — отдельное пространство под каждый контекст.</p>
+  <table>
+    <tr><th>Действие</th><th>Сочетание</th><th>Примечание</th></tr>
+    <tr><td class="d">Стол влево / вправо</td><td><span class="kbd">Ctrl+Alt+←</span> / <span class="kbd">Ctrl+Alt+→</span></td><td class="d"></td></tr>
+    <tr><td class="d">Стол вверх / вниз</td><td><span class="kbd">Ctrl+Alt+↑</span> / <span class="kbd">Ctrl+Alt+↓</span></td><td class="d">Нет стола «вниз» — Cinnamon создаст его.</td></tr>
+    <tr><td class="d">На 1-й / последний стол</td><td><span class="kbd">Super+Home</span> / <span class="kbd">Super+End</span></td><td class="d">Переключение на 2–12 пустое по умолчанию.</td></tr>
+    <tr><td class="d">Перенести окно на соседний стол</td><td><span class="kbd">Ctrl+Shift+Alt+←/→/↑/↓</span></td><td class="d">Стол и окно одним аккордом.</td></tr>
+    <tr><td class="d">Перенести окно на 1-й / последний</td><td><span class="kbd">Super+Shift+Home</span> / <span class="kbd">Super+Shift+End</span></td><td class="d"></td></tr>
+  </table>
+</div>
+
+<div class="sec" id="o4">
+  <h2 data-n="4">Запуск приложений без мыши <span class="tag">launcher</span></h2>
+  <table>
+    <tr><th>Действие</th><th>Сочетание</th><th>Примечание</th></tr>
+    <tr><td class="d">Диалог запуска команды</td><td><span class="kbd">Alt+F2</span></td><td class="d">Введи имя → Enter. Tab — автодополнение пути.</td></tr>
+    <tr class="group"><td colspan="3">Быстрый запуск</td></tr>
+    <tr><td class="d">Открыть терминал</td><td><span class="kbd">Ctrl+Alt+t</span></td><td class="d">gnome-terminal.</td></tr>
+    <tr><td class="d">Главное меню (поиск)</td><td><span class="kbd">Super</span></td><td class="d">Набирай имя приложения сразу.</td></tr>
+    <tr><td class="d">Файловый менеджер</td><td><span class="kbd">Super+e</span></td><td class="d"></td></tr>
+    <tr><td class="d">Переключение раскладки</td><td><span class="kbd">Alt+Shift</span></td><td class="d">xkb grp:alt_shift_toggle.</td></tr>
+    <tr><td class="d">Перезапустить Cinnamon</td><td><span class="kbd">Ctrl+Alt+Esc</span></td><td class="d">Быстрый сброс оболочки.</td></tr>
+    <tr><td class="d">Блокировка экрана</td><td><span class="kbd">Ctrl+Alt+l</span></td><td class="d"></td></tr>
+  </table>
+</div>
+
+<div class="sec" id="o5">
+  <h2 data-n="5">Готовый workflow: терминал ↔ код <span class="tag">сценарий</span></h2>
+  <p class="lead">Одна подобранная раскладка под твой случай. Отрабатывай именно её — не распыляйся на остальные.</p>
+  <div class="flow">
+    <div class="node"><b>1 · Разложи два окна</b>Редактор и терминал. Каждому — <span class="kbd">Super+←</span> и <span class="kbd">Super+→</span>: терминал слева, код справа.</div>
+    <div class="arrow">↓</div>
+    <div class="node"><b>2 · Пиши в терминале</b>Нужен результат — <span class="kbd">Alt+Tab</span> (отпусти сразу) перескочит в редактор.</div>
+    <div class="arrow">↓</div>
+    <div class="node"><b>3 · Скролль код</b><span class="kbd">PgUp</span>/<span class="kbd">PgDn</span>, к началу/концу файла — <span class="kbd">Ctrl+Home</span>/<span class="kbd">Ctrl+End</span>.</div>
+    <div class="arrow">↓</div>
+    <div class="node"><b>4 · Обратно в терминал</b>Снова <span class="kbd">Alt+Tab</span> — вернёт в то же место ввода.</div>
+  </div>
+  <div class="note"><b>Если окна мешают друг другу:</b> вместо Alt+Tab разведи их по двум столам (<span class="kbd">Ctrl+Alt+←/→</span>) и держи фокус на «своём». Сплиты не накладываются.</div>
+</div>
+
+<div class="sec" id="o6">
+  <h2 data-n="6">Внутри редактора / IDE <span class="tag">проверить у себя</span></h2>
+  <p class="lead">Это не Cinnamon, а сами программы — то, что чаще всего нужно при чтении кода. Точные сочетания зависят от твоего редактора.</p>
+  <table>
+    <tr><th>Действие</th><th>VS Code / Codium</th><th>IntelliJ / PyCharm</th><th>Neovim / Vim</th></tr>
+    <tr><td class="d">Встроенный терминал</td><td><span class="kbd">Ctrl+`</span></td><td><span class="kbd">Alt+F12</span></td><td><span class="kbd">:term</span> → <span class="kbd">Ctrl+\ Ctrl+n</span></td></tr>
+    <tr><td class="d">Вернуться из терминала в код</td><td><span class="kbd">Ctrl+`</span></td><td><span class="kbd">Alt+F12</span></td><td><span class="kbd">Ctrl+w</span> → h/j/k/l</td></tr>
+    <tr><td class="d">Переключение файлов</td><td><span class="kbd">Ctrl+Tab</span></td><td><span class="kbd">Ctrl+Tab</span></td><td>:bnext / :bprev</td></tr>
+    <tr><td class="d">К строке / по проекту</td><td><span class="kbd">Ctrl+g</span> / <span class="kbd">Ctrl+Shift+f</span></td><td><span class="kbd">Ctrl+g</span> / <span class="kbd">Ctrl+Shift+f</span></td><td>:42 / /pattern</td></tr>
+    <tr><td class="d">Начало / конец файла</td><td><span class="kbd">Ctrl+Home</span> / <span class="kbd">Ctrl+End</span></td><td><span class="kbd">Ctrl+Home</span> / <span class="kbd">Ctrl+End</span></td><td>gg / G</td></tr>
+  </table>
+  <div class="note"><b>Проверь в настройках своего редактора</b> — там же «терминал» можно повесить на самое удобное тебе сочетание.</div>
+</div>
+
+<div class="sec" id="o7">
+  <h2 data-n="7">Скролл самого терминала <span class="tag">gnome-terminal</span></h2>
+  <table>
+    <tr><th>Действие</th><th>Сочетание</th><th>Примечание</th></tr>
+    <tr><td class="d">Страница вверх / вниз</td><td><span class="kbd">Shift+PgUp</span> / <span class="kbd">Shift+PgDn</span></td><td class="d">Длинный вывод, логи, --help.</td></tr>
+    <tr><td class="d">Построчная прокрутка</td><td><span class="kbd">Ctrl+Shift+↑</span> / <span class="kbd">Ctrl+Shift+↓</span></td><td class="d">В некоторых терминалах иначе.</td></tr>
+    <tr><td class="d">К началу / концу вывода</td><td><span class="kbd">Shift+Home</span> / <span class="kbd">Shift+End</span></td><td class="d"></td></tr>
+    <tr><td class="d">Поиск по выводу</td><td><span class="kbd">Ctrl+Shift+f</span></td><td class="d">Только gnome-terminal.</td></tr>
+  </table>
+</div>
+
+<div class="sec" id="o8">
+  <h2 data-n="8">Скриншоты и прочее <span class="tag">без мыши</span></h2>
+  <table>
+    <tr><th>Действие</th><th>Сочетание</th></tr>
+    <tr><td class="d">Весь экран / окно / область</td><td><span class="kbd">Print</span> / <span class="kbd">Alt+Print</span> / <span class="kbd">Shift+Print</span></td></tr>
+    <tr><td class="d">Снимок в буфер обмена</td><td><span class="kbd">Ctrl+Print</span> · <span class="kbd">Ctrl+Alt+Print</span></td></tr>
+    <tr><td class="d">Громкость / яркость</td><td>XF86Audio… / XF86MonBrightness…</td></tr>
+  </table>
+</div>
+
+<div class="sec" id="o9">
+  <h2 data-n="9">Как это настроено у тебя и как менять <span class="tag">gsettings</span></h2>
+  <p class="lead">Все значения выше — фактические настройки твоей системы. Проверить или поменять в терминале:</p>
+  <table>
+    <tr><th>Команда</th><th>Что отдаёт</th></tr>
+    <tr><td class="d"><code>gsettings list-recursively org.cinnamon.desktop.keybindings.wm</code></td><td class="d">WM-хоткеи: окна, столы, мониторы.</td></tr>
+    <tr><td class="d"><code>gsettings list-recursively org.gnome.desktop.wm.keybindings</code></td><td class="d">Дублирующая схема (Cinnamon читает обе).</td></tr>
+    <tr><td class="d"><code>gsettings list-recursively org.cinnamon.desktop.keybindings.media-keys</code></td><td class="d">Терминал, скриншоты, звук, запуск.</td></tr>
+  </table>
+  <div class="note"><b>Графический путь:</b> Меню → Параметры → Клавиатура → вкладки «Окна» и «Комбинации клавиш». Там же — собственные (custom) сочетания.</div>
+</div>
+
+<div class="foot">Значения сняты с живой системы (gsettings) 2026-11-27 · Cinnamon6.4.10 · Debian 13 «trixie» · X11.<br>
+Оформление — «карточки» из репозитория memory · npotehin. Открывается офлайн двойным кликом.</div>
+</div>
+
+<script>
+const root = document.documentElement;
+function setTheme(t){ root.dataset.theme = t;
+  document.querySelectorAll('[data-t]').forEach(b=>b.setAttribute('aria-pressed', b.dataset.t===t)); }
+document.querySelectorAll('[data-t]').forEach(b=>b.onclick=()=>setTheme(b.dataset.t));
+setTheme('light');
+</script>
+</body>
+</html>
