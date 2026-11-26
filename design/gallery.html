@@ -74,7 +74,7 @@
     <tr><td>--s1…--s7</td><td>4…34px</td><td>отступы</td></tr>
     <tr><td>--r-sm…--r-lg</td><td>6 / 10 / 16px</td><td>радиусы</td></tr>
     <tr><td>--wrap</td><td>860px</td><td>ширина колонки</td></tr>
-  </table>
+  </table></div>
 </div>
 
 <div class="sec" id="k">
@@ -98,24 +98,24 @@
     <div class="node"><b>Шаг</b>Что получаем</div>
   </div>
   <h3>Таблица</h3>
-  <table>
+  <div class="tablewrap"><table>
     <tr><th>Колонка</th><th>Значение</th></tr>
     <tr><td class="d">строка</td><td class="d">текст</td></tr>
     <tr class="group"><td colspan="2">Группа строк</td></tr>
     <tr><td class="d">строка</td><td class="d">текст</td></tr>
-  </table>
+  </table></div>
 </div>
 
 <div class="sec" id="use">
   <h2 data-n="5">Как подключить в новом проекте</h2>
-  <table>
+  <div class="tablewrap"><table>
     <tr><th>Шаг</th><th>Что сделать</th></tr>
     <tr><td class="d">1</td><td class="d">Скопируй папку <code>design/</code> в проект.</td></tr>
     <tr><td class="d">2</td><td class="d">В <code>&lt;head&gt;</code> добавь два <code>&lt;link&gt;</code>: сначала <code>tokens.css</code>, потом <code>base.css</code>.</td></tr>
     <tr><td class="d">3</td><td class="d">Поставь на <code>&lt;html&gt;</code> атрибут <code>data-theme="light"</code> (или <code>dark</code>). Без атрибута тема следует системной.</td></tr>
     <tr><td class="d">4</td><td class="d">Разметка: <code>.wrap</code> → <code>.hero</code> → <code>.sec</code> с <code>h2[data-n]</code>.</td></tr>
     <tr><td class="d">5</td><td class="d">Свои цвета не хардкодь — добавляй токен в <code>tokens.css</code> для обеих тем.</td></tr>
-  </table>
+  </table></div>
   <div class="note"><b>Переключатель темы</b> — три строки JS из <code>hotkeys.html</code>: меняет <code>data-theme</code> на <code>&lt;html&gt;</code>.</div>
 </div>
 

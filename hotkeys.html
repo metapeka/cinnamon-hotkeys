@@ -40,7 +40,7 @@
 <div class="sec" id="o1">
   <h2 data-n="1">Окна: переключение между терминалом и редактором <span class="tag">главное</span></h2>
   <p class="lead">Пишешь код в терминале → смотришь результат в редакторе → возвращаешься. Одна рука, без мыши.</p>
-  <table>
+  <div class="tablewrap"><table>
     <tr><th>Действие</th><th>Сочетание</th><th>Примечание</th></tr>
     <tr><td class="d">Переключение окон (Alt-Tab)</td><td><span class="kbd">Alt+Tab</span></td><td class="d">Отпусти сразу — предыдущее окно. Удерживай и веди Tab для перебора.</td></tr>
     <tr><td class="d">В обратном порядке</td><td><span class="kbd">Shift+Alt+Tab</span></td><td class="d"></td></tr>
@@ -48,13 +48,13 @@
     <tr><td class="d">Свернуть окно</td><td><span class="kbd">Super+h</span></td><td class="d"></td></tr>
     <tr><td class="d">Развернуть / вернуть размер</td><td><span class="kbd">Alt+F10</span> / <span class="kbd">Alt+F5</span></td><td class="d">Вернуть размер также <span class="kbd">Super+↓</span>.</td></tr>
     <tr><td class="d">Закрыть окно</td><td><span class="kbd">Alt+F4</span></td><td class="d"></td></tr>
-  </table>
+  </table></div>
 </div>
 
 <div class="sec" id="o2">
   <h2 data-n="2">Разложить терминал и редактор на пол-экрана <span class="tag">разметка</span></h2>
   <p class="lead">Не переключайся между окнами — поставь их рядом. Взгляд перескакивает сам, фокус наводишь клавишей.</p>
-  <table>
+  <div class="tablewrap"><table>
     <tr><th>Действие</th><th>Сочетание</th><th>Примечание</th></tr>
     <tr class="group"><td colspan="3">Причаливание (tile) и размеры</td></tr>
     <tr><td class="d">Слева / справа — половина экрана</td><td><span class="kbd">Super+←</span> / <span class="kbd">Super+→</span></td><td class="d">То же в muffin (оконный менеджер).</td></tr>
@@ -62,25 +62,25 @@
     <tr><td class="d">Скрыть все окна (рабочий стол)</td><td><span class="kbd">Super+d</span></td><td class="d">Повтор — вернуть окна.</td></tr>
     <tr><td class="d">Окно на соседний монитор</td><td><span class="kbd">Super+Shift+←/→/↑/↓</span></td><td class="d"></td></tr>
     <tr><td class="d">Меню окна / переместить / размер</td><td><span class="kbd">Alt+Space</span> / <span class="kbd">Alt+F7</span> / <span class="kbd">Alt+F8</span></td><td class="d">Стрелки двигают, Enter отпускает.</td></tr>
-  </table>
+  </table></div>
 </div>
 
 <div class="sec" id="o3">
   <h2 data-n="3">Виртуальные рабочие столы <span class="tag">workspaces</span></h2>
   <p class="lead">Терминал на одном столе, редактор на другом — отдельное пространство под каждый контекст.</p>
-  <table>
+  <div class="tablewrap"><table>
     <tr><th>Действие</th><th>Сочетание</th><th>Примечание</th></tr>
     <tr><td class="d">Стол влево / вправо</td><td><span class="kbd">Ctrl+Alt+←</span> / <span class="kbd">Ctrl+Alt+→</span></td><td class="d"></td></tr>
     <tr><td class="d">Стол вверх / вниз</td><td><span class="kbd">Ctrl+Alt+↑</span> / <span class="kbd">Ctrl+Alt+↓</span></td><td class="d">Нет стола «вниз» — Cinnamon создаст его.</td></tr>
     <tr><td class="d">На 1-й / последний стол</td><td><span class="kbd">Super+Home</span> / <span class="kbd">Super+End</span></td><td class="d">Переключение на 2–12 пустое по умолчанию.</td></tr>
     <tr><td class="d">Перенести окно на соседний стол</td><td><span class="kbd">Ctrl+Shift+Alt+←/→/↑/↓</span></td><td class="d">Стол и окно одним аккордом.</td></tr>
     <tr><td class="d">Перенести окно на 1-й / последний</td><td><span class="kbd">Super+Shift+Home</span> / <span class="kbd">Super+Shift+End</span></td><td class="d"></td></tr>
-  </table>
+  </table></div>
 </div>
 
 <div class="sec" id="o4">
   <h2 data-n="4">Запуск приложений без мыши <span class="tag">launcher</span></h2>
-  <table>
+  <div class="tablewrap"><table>
     <tr><th>Действие</th><th>Сочетание</th><th>Примечание</th></tr>
     <tr><td class="d">Диалог запуска команды</td><td><span class="kbd">Alt+F2</span></td><td class="d">Введи имя → Enter. Tab — автодополнение пути.</td></tr>
     <tr class="group"><td colspan="3">Быстрый запуск</td></tr>
@@ -90,7 +90,7 @@
     <tr><td class="d">Переключение раскладки</td><td><span class="kbd">Alt+Shift</span></td><td class="d">xkb grp:alt_shift_toggle.</td></tr>
     <tr><td class="d">Перезапустить Cinnamon</td><td><span class="kbd">Ctrl+Alt+Esc</span></td><td class="d">Быстрый сброс оболочки.</td></tr>
     <tr><td class="d">Блокировка экрана</td><td><span class="kbd">Ctrl+Alt+l</span></td><td class="d"></td></tr>
-  </table>
+  </table></div>
 </div>
 
 <div class="sec" id="o5">
@@ -111,47 +111,47 @@
 <div class="sec" id="o6">
   <h2 data-n="6">Внутри редактора / IDE <span class="tag">проверить у себя</span></h2>
   <p class="lead">Это не Cinnamon, а сами программы — то, что чаще всего нужно при чтении кода. Точные сочетания зависят от твоего редактора.</p>
-  <table>
+  <div class="tablewrap"><table>
     <tr><th>Действие</th><th>VS Code / Codium</th><th>IntelliJ / PyCharm</th><th>Neovim / Vim</th></tr>
     <tr><td class="d">Встроенный терминал</td><td><span class="kbd">Ctrl+`</span></td><td><span class="kbd">Alt+F12</span></td><td><span class="kbd">:term</span> → <span class="kbd">Ctrl+\ Ctrl+n</span></td></tr>
     <tr><td class="d">Вернуться из терминала в код</td><td><span class="kbd">Ctrl+`</span></td><td><span class="kbd">Alt+F12</span></td><td><span class="kbd">Ctrl+w</span> → h/j/k/l</td></tr>
     <tr><td class="d">Переключение файлов</td><td><span class="kbd">Ctrl+Tab</span></td><td><span class="kbd">Ctrl+Tab</span></td><td>:bnext / :bprev</td></tr>
     <tr><td class="d">К строке / по проекту</td><td><span class="kbd">Ctrl+g</span> / <span class="kbd">Ctrl+Shift+f</span></td><td><span class="kbd">Ctrl+g</span> / <span class="kbd">Ctrl+Shift+f</span></td><td>:42 / /pattern</td></tr>
     <tr><td class="d">Начало / конец файла</td><td><span class="kbd">Ctrl+Home</span> / <span class="kbd">Ctrl+End</span></td><td><span class="kbd">Ctrl+Home</span> / <span class="kbd">Ctrl+End</span></td><td>gg / G</td></tr>
-  </table>
+  </table></div>
   <div class="note"><b>Проверь в настройках своего редактора</b> — там же «терминал» можно повесить на самое удобное тебе сочетание.</div>
 </div>
 
 <div class="sec" id="o7">
   <h2 data-n="7">Скролл самого терминала <span class="tag">gnome-terminal</span></h2>
-  <table>
+  <div class="tablewrap"><table>
     <tr><th>Действие</th><th>Сочетание</th><th>Примечание</th></tr>
     <tr><td class="d">Страница вверх / вниз</td><td><span class="kbd">Shift+PgUp</span> / <span class="kbd">Shift+PgDn</span></td><td class="d">Длинный вывод, логи, --help.</td></tr>
     <tr><td class="d">Построчная прокрутка</td><td><span class="kbd">Ctrl+Shift+↑</span> / <span class="kbd">Ctrl+Shift+↓</span></td><td class="d">В некоторых терминалах иначе.</td></tr>
     <tr><td class="d">К началу / концу вывода</td><td><span class="kbd">Shift+Home</span> / <span class="kbd">Shift+End</span></td><td class="d"></td></tr>
     <tr><td class="d">Поиск по выводу</td><td><span class="kbd">Ctrl+Shift+f</span></td><td class="d">Только gnome-terminal.</td></tr>
-  </table>
+  </table></div>
 </div>
 
 <div class="sec" id="o8">
   <h2 data-n="8">Скриншоты и прочее <span class="tag">без мыши</span></h2>
-  <table>
+  <div class="tablewrap"><table>
     <tr><th>Действие</th><th>Сочетание</th></tr>
     <tr><td class="d">Весь экран / окно / область</td><td><span class="kbd">Print</span> / <span class="kbd">Alt+Print</span> / <span class="kbd">Shift+Print</span></td></tr>
     <tr><td class="d">Снимок в буфер обмена</td><td><span class="kbd">Ctrl+Print</span> · <span class="kbd">Ctrl+Alt+Print</span></td></tr>
     <tr><td class="d">Громкость / яркость</td><td>XF86Audio… / XF86MonBrightness…</td></tr>
-  </table>
+  </table></div>
 </div>
 
 <div class="sec" id="o9">
   <h2 data-n="9">Как это настроено у тебя и как менять <span class="tag">gsettings</span></h2>
   <p class="lead">Все значения выше — фактические настройки твоей системы. Проверить или поменять в терминале:</p>
-  <table>
+  <div class="tablewrap"><table>
     <tr><th>Команда</th><th>Что отдаёт</th></tr>
     <tr><td class="d"><code>gsettings list-recursively org.cinnamon.desktop.keybindings.wm</code></td><td class="d">WM-хоткеи: окна, столы, мониторы.</td></tr>
     <tr><td class="d"><code>gsettings list-recursively org.gnome.desktop.wm.keybindings</code></td><td class="d">Дублирующая схема (Cinnamon читает обе).</td></tr>
     <tr><td class="d"><code>gsettings list-recursively org.cinnamon.desktop.keybindings.media-keys</code></td><td class="d">Терминал, скриншоты, звук, запуск.</td></tr>
-  </table>
+  </table></div>
   <div class="note"><b>Графический путь:</b> Меню → Параметры → Клавиатура → вкладки «Окна» и «Комбинации клавиш». Там же — собственные (custom) сочетания.</div>
 </div>
 
@@ -160,7 +160,7 @@
   <p class="lead">Справочник — не абстрактный список, а снимок конкретной машины. Ниже — что именно связывает страницу с железом и где смотреть.</p>
 
   <h3>Что за система</h3>
-  <table>
+  <div class="tablewrap"><table>
     <tr><th>Параметр</th><th>Значение</th><th>Чем проверить</th></tr>
     <tr><td class="d">Дистрибутив</td><td class="d">Debian 13 «trixie»</td><td><code>cat /etc/os-release</code></td></tr>
     <tr><td class="d">Рабочий стол</td><td class="d">Cinnamon 6.4.10</td><td><code>cinnamon --version</code></td></tr>
@@ -168,19 +168,19 @@
     <tr><td class="d">Сессия</td><td class="d">lightdm-xsession</td><td><code>echo $DESKTOP_SESSION</code></td></tr>
     <tr><td class="d">Терминал</td><td class="d">gnome-terminal</td><td><code>gsettings get org.cinnamon.desktop.default-applications.terminal exec</code></td></tr>
     <tr><td class="d">Раскладка</td><td class="d">grp:alt_shift_toggle</td><td><code>setxkbmap -query</code></td></tr>
-  </table>
+  </table></div>
 
   <h3>Где хранятся настройки</h3>
-  <table>
+  <div class="tablewrap"><table>
     <tr><th>Что</th><th>Где</th><th>Как читать</th></tr>
     <tr><td class="d">Все настройки Cinnamon и WM</td><td class="d"><code>~/.config/dconf/user</code> (двоичная база)</td><td><code>dconf dump /org/cinnamon/</code></td></tr>
     <tr><td class="d">Хоткеи оконного менеджера</td><td class="d">схемы gsettings</td><td><code>dconf dump /org/gnome/desktop/wm/keybindings/</code></td></tr>
     <tr><td class="d">Темы, расширения, апплеты</td><td class="d"><code>~/.local/share/cinnamon/</code>, <code>~/.themes/</code></td><td><code>ls ~/.local/share/cinnamon</code></td></tr>
     <tr><td class="d">Логи сессии</td><td class="d"><code>~/.xsession-errors</code></td><td><code>tail ~/.xsession-errors</code></td></tr>
-  </table>
+  </table></div>
 
   <h3>Найти клавишу и переназначить</h3>
-  <table>
+  <div class="tablewrap"><table>
     <tr><th>Задача</th><th>Команда</th></tr>
     <tr><td class="d">Узнать код/имя нажатой клавиши</td><td><code>xev</code> — жми клавишу, смотри в выводе</td></tr>
     <tr><td class="d">Прочитать одно сочетание</td><td><code>gsettings get org.cinnamon.desktop.keybindings.wm close</code></td></tr>
@@ -188,7 +188,7 @@
     <tr><td class="d">Следить за изменениями вживую</td><td><code>dconf watch /</code> — меняй в настройках, видно что пишется</td></tr>
     <tr><td class="d">Сохранить снимок настроек</td><td><code>dconf dump /org/cinnamon/ &gt; cinnamon-backup.ini</code></td></tr>
     <tr><td class="d">Вернуть из снимка</td><td><code>dconf load /org/cinnamon/ &lt; cinnamon-backup.ini</code></td></tr>
-  </table>
+  </table></div>
 
   <div class="note"><b>Осторожно с <code>dconf load</code>:</b> он перезаписывает раздел целиком. Сначала сделай <code>dconf dump</code> — это и есть резервная копия.</div>
 </div>
@@ -196,7 +196,7 @@
 <div class="sec" id="o11">
   <h2 data-n="11">Материалы: что читать и где брать <span class="tag">ссылки</span></h2>
   <p class="lead">Официальные источники и локальные справочники. Локальные открываются без сети.</p>
-  <table>
+  <div class="tablewrap"><table>
     <tr><th>Тема</th><th>Источник</th><th>Тип</th></tr>
     <tr><td class="d">Debian: установка, пакеты, релизы</td><td><a href="https://www.debian.org/">debian.org</a></td><td class="d">сайт</td></tr>
     <tr><td class="d">Cinnamon: проект и исходники</td><td><a href="https://github.com/linuxmint/Cinnamon">github.com/linuxmint/Cinnamon</a></td><td class="d">репозиторий</td></tr>
@@ -206,7 +206,7 @@
     <tr><td class="d">xev: коды клавиш</td><td><code>man xev</code></td><td class="d">man</td></tr>
     <tr><td class="d">setxkbmap: раскладки</td><td><code>man setxkbmap</code></td><td class="d">man</td></tr>
     <tr><td class="d">Список всех схем</td><td><code>gsettings list-schemas</code></td><td class="d">команда</td></tr>
-  </table>
+  </table></div>
 
   <h3>Готовые наборы сочетаний</h3>
   <ul>

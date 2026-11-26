@@ -91,6 +91,7 @@ body {
 h2 {
   font-size: var(--fs-lg); margin: 0 0 var(--s1);
   letter-spacing: -.01em; display: flex; align-items: center; gap: 10px;
+  flex-wrap: wrap;
 }
 h2::before {
   content: attr(data-n);
@@ -109,6 +110,8 @@ h3 { font-size: 15px; margin: var(--s5) 0 var(--s2); letter-spacing: -.01em; }
 p.lead { color: var(--muted); font-size: 14.5px; margin: 0 0 var(--s3); }
 
 /* ---------- таблицы ---------- */
+.tablewrap { overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 10px 0; }
+.tablewrap table { margin: 0; }
 table { width: 100%; border-collapse: collapse; margin: 10px 0; font-size: 14px; }
 th, td { padding: 10px 12px; text-align: left; border-bottom: 1px solid var(--line); vertical-align: top; }
 th {
@@ -121,15 +124,23 @@ tr.group td { background: var(--soft); font-weight: 700; color: var(--ink); }
 
 /* ---------- сочетания клавиш ---------- */
 .kbd {
-  font-family: var(--mono); font-size: var(--fs-sm); font-weight: 650;
+  font-family: var(--mono), "DejaVu Sans", sans-serif;
+  font-size: var(--fs-sm); font-weight: 650;
   color: var(--key); background: var(--soft);
   border: 1px solid var(--line); border-radius: var(--r-sm);
-  padding: 2px 8px; white-space: nowrap;
+  padding: 2px 7px; white-space: nowrap;
+  vertical-align: middle; line-height: 1.45;
 }
+/* inline-block: длинная команда переносится ВНУТРИ плашки,
+   рамка и фон остаются вокруг всех строк */
 code {
+  display: inline-block;
+  max-width: 100%;
+  vertical-align: middle;
   font-family: var(--mono); font-size: 12.5px; color: var(--ink);
   background: var(--soft); border: 1px solid var(--line);
   border-radius: var(--r-sm); padding: 2px 8px;
+  line-height: 1.5;
   overflow-wrap: anywhere;
 }
 
@@ -160,9 +171,28 @@ li { margin: var(--s1) 0; }
   border-top: 1px solid var(--line);
   color: var(--muted); font-size: 12.5px;
 }
-.foot a { color: inherit; }
+.foot a { color: inherit; text-decoration: none; }
+.foot a:hover { text-decoration: underline; }
 
-a { color: inherit; }
+a {
+  color: var(--key);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+}
+a:hover { text-decoration-thickness: 2px; }
+.chip { text-decoration: none; }
+
+@media (max-width: 560px) {
+  .bar .hint { display: none; }
+  .sec h2 .tag { margin-left: 0; }
+  .tablewrap table { min-width: 520px; }
+  .tablewrap::after {
+    content: "→ таблица прокручивается вбок";
+    display: block; font-size: 11px; color: var(--muted);
+    padding: 4px 2px 0;
+  }
+}
 
 @media (max-width: 420px) {
   body { font-size: 15.5px; }
