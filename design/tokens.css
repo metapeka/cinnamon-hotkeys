@@ -1,0 +1,85 @@
+/* =========================================================
+   «Тёплая бумага» — дизайн-токены
+   Производная от оформления memory/npotehin (styles/01-cards).
+   Подключение: <link rel="stylesheet" href="design/tokens.css">
+   Смена темы: data-theme="light" | "dark" на <html>,
+   без атрибута — следует системной (prefers-color-scheme).
+   ========================================================= */
+
+:root {
+  /* ---------- палитра: светлая ---------- */
+  --paper:      #f4f2ee;   /* фон страницы */
+  --surface:    #ffffff;   /* карточка */
+  --soft:       #faf8f5;   /* мягкая подложка, kbd, note */
+  --ink:        #1d1d1f;   /* основной текст */
+  --muted:      #6b665f;   /* вторичный текст */
+  --line:       #e2ded7;   /* границы */
+  --accent:     #1d1d1f;   /* активный бейдж, заливка */
+  --accent-ink: #f4f2ee;   /* текст на accent */
+  --key:        #7a4e0f;   /* сочетания клавиш */
+  --warn:       #d9a41a;   /* выноски */
+  --ok:         #2b7a4b;   /* успех */
+
+  /* ---------- типографика ---------- */
+  --font: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, Arial, sans-serif;
+  --mono: ui-monospace, "SF Mono", "Cascadia Code", Consolas, monospace;
+  --fs-xs:   11px;
+  --fs-sm:   13px;
+  --fs-base: 16px;
+  --fs-lg:   19px;
+  --fs-xl:   28px;
+  --lh:      1.62;
+  --ls-tight:-.02em;
+  --ls-caps: .14em;
+
+  /* ---------- шаг сетки ---------- */
+  --s1: 4px;  --s2: 8px;  --s3: 12px; --s4: 16px;
+  --s5: 20px; --s6: 26px; --s7: 34px;
+
+  /* ---------- радиусы ---------- */
+  --r-sm: 6px; --r-md: 10px; --r-lg: 16px; --r-pill: 999px;
+
+  /* ---------- тени ---------- */
+  --shadow: 0 1px 2px rgba(0,0,0,.05);
+
+  /* ---------- раскладка ---------- */
+  --wrap: 860px;
+}
+
+/* ---------- палитра: тёмная ---------- */
+[data-theme="dark"] {
+  --paper:      #0f0f10;
+  --surface:    #1c1c1e;
+  --soft:       #242426;
+  --ink:        #f2f2f7;
+  --muted:      #98989f;
+  --line:       #333333;
+  --accent:     #f2f2f7;
+  --accent-ink: #0f0f10;
+  --key:        #e0b446;
+  --warn:       #e0b446;
+  --ok:         #4aa06a;
+  --shadow:     none;
+}
+
+/* ---------- авто-тема: следует системе, если тема не задана вручную ---------- */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]):not([data-theme="dark"]) {
+    --paper:      #0f0f10;
+    --surface:    #1c1c1e;
+    --soft:       #242426;
+    --ink:        #f2f2f7;
+    --muted:      #98989f;
+    --line:       #333333;
+    --accent:     #f2f2f7;
+    --accent-ink: #0f0f10;
+    --key:        #e0b446;
+    --warn:       #e0b446;
+    --ok:         #4aa06a;
+    --shadow:     none;
+  }
+}
+
+@media print {
+  :root { --paper: #fff; --surface: #fff; --soft: #faf8f5; --ink: #000; }
+}

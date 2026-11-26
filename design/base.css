@@ -1,0 +1,175 @@
+/* =========================================================
+   «Тёплая бумага» — компоненты
+   Только токены из tokens.css, без «магических» чисел цвета.
+   ========================================================= */
+
+*, *::before, *::after { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+html, body { margin: 0; padding: 0; }
+
+body {
+  font-family: var(--font);
+  color: var(--ink);
+  background: var(--paper);
+  font-size: var(--fs-base);
+  line-height: var(--lh);
+  -webkit-text-size-adjust: 100%;
+}
+
+.wrap { max-width: var(--wrap); margin: 0 auto; padding: 0 var(--s3) 90px; }
+
+/* ---------- липкая шапка ---------- */
+.bar {
+  position: sticky; top: 0; z-index: 50;
+  background: var(--paper);
+  border-bottom: 1px solid var(--line);
+}
+.chips {
+  display: flex; gap: 7px; overflow-x: auto;
+  padding: 9px var(--s3) var(--s2);
+  scrollbar-width: none; -webkit-overflow-scrolling: touch;
+}
+.chips::-webkit-scrollbar { display: none; }
+.chip {
+  flex: 0 0 auto; padding: 7px 13px;
+  border-radius: var(--r-pill);
+  background: var(--soft); border: 1px solid var(--line);
+  color: var(--muted); font-size: var(--fs-sm); font-weight: 600;
+  text-decoration: none; white-space: nowrap;
+}
+.chip:hover { color: var(--ink); }
+.chip:active { background: var(--surface); }
+
+.switches {
+  display: flex; gap: var(--s2); align-items: center;
+  padding: 0 var(--s3) 9px;
+}
+.seg {
+  display: flex; background: var(--soft);
+  border: 1px solid var(--line); border-radius: var(--r-md);
+  padding: 3px; gap: 2px;
+}
+.seg button {
+  border: 0; background: transparent; color: var(--muted);
+  font-size: 12px; font-weight: 600; padding: 6px 10px;
+  border-radius: 7px; font-family: inherit; cursor: pointer;
+}
+.seg button[aria-pressed="true"] {
+  background: var(--surface); color: var(--ink);
+  box-shadow: 0 1px 2px rgba(0,0,0,.12);
+}
+.bar .hint {
+  padding: 0 var(--s3) var(--s2);
+  font-size: 12px; color: var(--muted);
+}
+
+/* ---------- заголовок страницы ---------- */
+.hero { padding: var(--s6) 0 6px; }
+.hero .k {
+  font-size: var(--fs-xs); letter-spacing: var(--ls-caps);
+  text-transform: uppercase; color: var(--muted); font-weight: 600;
+}
+.hero h1 {
+  font-size: var(--fs-xl); line-height: 1.2; margin: 9px 0 0;
+  letter-spacing: var(--ls-tight);
+}
+.hero p { color: var(--muted); font-size: 14.5px; margin: 9px 0 0; max-width: 72ch; }
+.meta { display: flex; gap: var(--s2); flex-wrap: wrap; margin-top: var(--s4); }
+.meta span {
+  font-size: 12px; background: var(--soft);
+  border: 1px solid var(--line); border-radius: var(--r-pill);
+  padding: 4px 12px; color: var(--muted); font-weight: 600;
+}
+.meta b { color: var(--ink); font-weight: 700; font-family: var(--mono); }
+
+/* ---------- карточка-раздел ---------- */
+.sec {
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: var(--r-lg); padding: var(--s5) 22px;
+  margin: 14px 0; box-shadow: var(--shadow);
+  scroll-margin-top: 74px;
+}
+h2 {
+  font-size: var(--fs-lg); margin: 0 0 var(--s1);
+  letter-spacing: -.01em; display: flex; align-items: center; gap: 10px;
+}
+h2::before {
+  content: attr(data-n);
+  font-size: 12px; background: var(--accent); color: var(--accent-ink);
+  width: 24px; height: 24px; border-radius: 7px;
+  display: inline-flex; align-items: center; justify-content: center;
+  flex: 0 0 24px; font-weight: 700; font-family: var(--mono);
+}
+h2 .tag {
+  margin-left: auto; font-size: var(--fs-xs); letter-spacing: .1em;
+  text-transform: uppercase; color: var(--muted);
+  border: 1px solid var(--line); border-radius: var(--r-pill);
+  padding: 3px 10px; font-weight: 600;
+}
+h3 { font-size: 15px; margin: var(--s5) 0 var(--s2); letter-spacing: -.01em; }
+p.lead { color: var(--muted); font-size: 14.5px; margin: 0 0 var(--s3); }
+
+/* ---------- таблицы ---------- */
+table { width: 100%; border-collapse: collapse; margin: 10px 0; font-size: 14px; }
+th, td { padding: 10px 12px; text-align: left; border-bottom: 1px solid var(--line); vertical-align: top; }
+th {
+  font-size: var(--fs-xs); text-transform: uppercase;
+  letter-spacing: .04em; color: var(--muted); font-weight: 650;
+}
+tr:last-child td { border-bottom: none; }
+td.d { color: var(--ink); }
+tr.group td { background: var(--soft); font-weight: 700; color: var(--ink); }
+
+/* ---------- сочетания клавиш ---------- */
+.kbd {
+  font-family: var(--mono); font-size: var(--fs-sm); font-weight: 650;
+  color: var(--key); background: var(--soft);
+  border: 1px solid var(--line); border-radius: var(--r-sm);
+  padding: 2px 8px; white-space: nowrap;
+}
+code {
+  font-family: var(--mono); font-size: 12.5px; color: var(--ink);
+  background: var(--soft); border: 1px solid var(--line);
+  border-radius: var(--r-sm); padding: 2px 8px;
+  overflow-wrap: anywhere;
+}
+
+/* ---------- схема-поток ---------- */
+.flow { display: flex; flex-direction: column; gap: 0; margin: 14px 0; }
+.node {
+  background: var(--soft); border: 1px solid var(--line);
+  border-radius: var(--r-md); padding: var(--s3) 14px; font-size: 14px;
+}
+.node b { display: block; font-size: var(--fs-sm); margin-bottom: 2px; }
+.arrow { text-align: center; color: var(--muted); font-size: 15px; line-height: 1.1; padding: 3px 0; }
+
+/* ---------- выноска ---------- */
+.note {
+  background: var(--soft); border: 1px solid var(--line);
+  border-left: 3px solid var(--warn);
+  border-radius: 0 var(--r-md) var(--r-md) 0;
+  padding: var(--s3) 14px; font-size: 14px;
+  margin: 13px 0; color: var(--ink);
+}
+.note b { color: var(--warn); }
+
+/* ---------- списки, подвал ---------- */
+ul, ol { padding-left: var(--s5); margin: var(--s2) 0; }
+li { margin: var(--s1) 0; }
+.foot {
+  margin-top: var(--s7); padding-top: var(--s4);
+  border-top: 1px solid var(--line);
+  color: var(--muted); font-size: 12.5px;
+}
+.foot a { color: inherit; }
+
+a { color: inherit; }
+
+@media (max-width: 420px) {
+  body { font-size: 15.5px; }
+  .hero h1 { font-size: 23px; }
+  .sec { padding: var(--s5) var(--s4); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}

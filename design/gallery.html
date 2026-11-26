@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="ru" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#f4f2ee">
+<title>Тёплая бумага · дизайн-токены</title>
+<link rel="stylesheet" href="tokens.css">
+<link rel="stylesheet" href="base.css">
+<style>
+  .swatches { display:grid; grid-template-columns:repeat(auto-fill,minmax(150px,1fr)); gap:10px; margin:12px 0; }
+  .sw { border:1px solid var(--line); border-radius:var(--r-md); overflow:hidden; background:var(--surface); }
+  .sw .chip-color { height:52px; }
+  .sw .lab { padding:7px 10px; font-size:12px; color:var(--muted); }
+  .sw .lab b { display:block; color:var(--ink); font-size:12.5px; font-family:var(--mono); }
+  .doctable td:first-child { font-family:var(--mono); font-size:12.5px; white-space:nowrap; }
+  .sample-h1 { font-size:var(--fs-xl); letter-spacing:var(--ls-tight); margin:0; }
+  .sample-h2 { font-size:var(--fs-lg); margin:0; }
+  .sample-p { color:var(--muted); margin:4px 0 0; }
+</style>
+</head>
+<body>
+<div class="bar">
+  <div class="chips">
+    <a class="chip" href="#c">Цвет</a><a class="chip" href="#t">Типографика</a>
+    <a class="chip" href="#k">Клавиши</a><a class="chip" href="#comp">Компоненты</a>
+    <a class="chip" href="#use">Подключение</a>
+  </div>
+  <div class="switches">
+    <div class="seg" role="group" aria-label="Тема">
+      <button data-t="light" aria-pressed="true">☀︎ светлая</button>
+      <button data-t="dark" aria-pressed="false">☾ тёмная</button>
+    </div>
+  </div>
+  <div class="hint">Стиль «Тёплая бумага» · <code>design/tokens.css</code> + <code>design/base.css</code></div>
+</div>
+
+<div class="wrap">
+<div class="hero">
+  <div class="k">Дизайн-система</div>
+  <h1>Тёплая бумага</h1>
+  <p>Набор токенов и компонентов для справочников, отчётов и вики. Сделан на базе оформления memory (карточки): тёплая бумага, спокойный текст, читаемые сочетания клавиш.</p>
+</div>
+
+<div class="sec" id="c">
+  <h2 data-n="1">Цвет</h2>
+  <p class="lead">Меняй только значения токенов — компоненты подхватят. Тёмная тема — те же имена.</p>
+  <div class="swatches">
+    <div class="sw"><div class="chip-color" style="background:var(--paper)"></div><div class="lab"><b>--paper</b>фон страницы</div></div>
+    <div class="sw"><div class="chip-color" style="background:var(--surface)"></div><div class="lab"><b>--surface</b>карточка</div></div>
+    <div class="sw"><div class="chip-color" style="background:var(--soft)"></div><div class="lab"><b>--soft</b>подложка</div></div>
+    <div class="sw"><div class="chip-color" style="background:var(--ink)"></div><div class="lab"><b>--ink</b>текст</div></div>
+    <div class="sw"><div class="chip-color" style="background:var(--muted)"></div><div class="lab"><b>--muted</b>вторичный</div></div>
+    <div class="sw"><div class="chip-color" style="background:var(--line)"></div><div class="lab"><b>--line</b>границы</div></div>
+    <div class="sw"><div class="chip-color" style="background:var(--key)"></div><div class="lab"><b>--key</b>сочетания</div></div>
+    <div class="sw"><div class="chip-color" style="background:var(--warn)"></div><div class="lab"><b>--warn</b>выноски</div></div>
+    <div class="sw"><div class="chip-color" style="background:var(--ok)"></div><div class="lab"><b>--ok</b>успех</div></div>
+  </div>
+  <div class="note"><b>Правило:</b> компонент не задаёт цвет напрямую — только <code>var(--token)</code>. Тогда смена темы бесплатна.</div>
+</div>
+
+<div class="sec" id="t">
+  <h2 data-n="2">Типографика и сетка</h2>
+  <p class="sample-h1">Заголовок страницы</p>
+  <p class="sample-h2">Заголовок раздела</p>
+  <p class="sample-p">Обычный текст страницы. Размер 16px, интерлиньяж 1.62 — удобно читать длинные разборы.</p>
+  <table class="doctable">
+    <tr><th>Токен</th><th>Значение</th><th>Где</th></tr>
+    <tr><td>--fs-xs</td><td>11px</td><td>подписи, метки, th</td></tr>
+    <tr><td>--fs-sm</td><td>13px</td><td>чипы, kbd, сноски</td></tr>
+    <tr><td>--fs-base</td><td>16px</td><td>текст</td></tr>
+    <tr><td>--fs-lg</td><td>19px</td><td>h2</td></tr>
+    <tr><td>--fs-xl</td><td>28px</td><td>h1</td></tr>
+    <tr><td>--s1…--s7</td><td>4…34px</td><td>отступы</td></tr>
+    <tr><td>--r-sm…--r-lg</td><td>6 / 10 / 16px</td><td>радиусы</td></tr>
+    <tr><td>--wrap</td><td>860px</td><td>ширина колонки</td></tr>
+  </table>
+</div>
+
+<div class="sec" id="k">
+  <h2 data-n="3">Сочетания клавиш</h2>
+  <p class="lead">Ключевой компонент справочника. Моноширинный, тёплый, читаемый в обеих темах.</p>
+  <p><span class="kbd">Alt+Tab</span> <span class="kbd">Super+←</span> <span class="kbd">Ctrl+Alt+t</span> <span class="kbd">Shift+PgUp</span></p>
+  <p>В строке: переключение — <span class="kbd">Alt+Tab</span>, терминал — <span class="kbd">Ctrl+Alt+t</span>.</p>
+  <p>Инлайн-код: <code>gsettings get org.cinnamon.desktop.keybindings.wm close</code></p>
+</div>
+
+<div class="sec" id="comp">
+  <h2 data-n="4">Компоненты</h2>
+  <h3>Карточка-раздел с номером</h3>
+  <p class="lead">Этот блок и есть <code>.sec</code> + <code>h2[data-n]</code>.</p>
+  <h3>Выноска</h3>
+  <div class="note"><b>Выноска:</b> важное без жирного текста. Левый край — <code>--warn</code>.</div>
+  <h3>Схема-поток</h3>
+  <div class="flow">
+    <div class="node"><b>Шаг</b>Что делаем</div>
+    <div class="arrow">↓</div>
+    <div class="node"><b>Шаг</b>Что получаем</div>
+  </div>
+  <h3>Таблица</h3>
+  <table>
+    <tr><th>Колонка</th><th>Значение</th></tr>
+    <tr><td class="d">строка</td><td class="d">текст</td></tr>
+    <tr class="group"><td colspan="2">Группа строк</td></tr>
+    <tr><td class="d">строка</td><td class="d">текст</td></tr>
+  </table>
+</div>
+
+<div class="sec" id="use">
+  <h2 data-n="5">Как подключить в новом проекте</h2>
+  <table>
+    <tr><th>Шаг</th><th>Что сделать</th></tr>
+    <tr><td class="d">1</td><td class="d">Скопируй папку <code>design/</code> в проект.</td></tr>
+    <tr><td class="d">2</td><td class="d">В <code>&lt;head&gt;</code> добавь два <code>&lt;link&gt;</code>: сначала <code>tokens.css</code>, потом <code>base.css</code>.</td></tr>
+    <tr><td class="d">3</td><td class="d">Поставь на <code>&lt;html&gt;</code> атрибут <code>data-theme="light"</code> (или <code>dark</code>). Без атрибута тема следует системной.</td></tr>
+    <tr><td class="d">4</td><td class="d">Разметка: <code>.wrap</code> → <code>.hero</code> → <code>.sec</code> с <code>h2[data-n]</code>.</td></tr>
+    <tr><td class="d">5</td><td class="d">Свои цвета не хардкодь — добавляй токен в <code>tokens.css</code> для обеих тем.</td></tr>
+  </table>
+  <div class="note"><b>Переключатель темы</b> — три строки JS из <code>hotkeys.html</code>: меняет <code>data-theme</code> на <code>&lt;html&gt;</code>.</div>
+</div>
+
+<div class="foot">Тёплая бумага · производная от memory/npotehin · <a href="../hotkeys.html">← справочник по хоткеям</a></div>
+</div>
+
+<script>
+const root = document.documentElement;
+function setTheme(t){
+  root.dataset.theme = t;
+  document.querySelectorAll('[data-t]').forEach(b =>
+    b.setAttribute('aria-pressed', b.dataset.t === t));
+}
+document.querySelectorAll('[data-t]').forEach(b => b.onclick = () => setTheme(b.dataset.t));
+setTheme('light');
+</script>
+</body>
+</html>

@@ -1,112 +1,35 @@
 <!DOCTYPE html>
-<html lang="ru" data-style="cards" data-theme="light">
+<html lang="ru" data-theme="light">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#f4f2ee">
 <title>Cinnamon · Навигация на клавиатуре</title>
-<style>
-:root{--bg:#f4f2ee;--card:#ffffff;--ink:#1d1d1f;--mut:#6b665f;--line:#e2ded7;--soft:#faf8f5;--warn:#d9a41a;--acc:#1d1d1f}
-[data-theme="dark"]{--bg:#0f0f10;--card:#1c1c1e;--ink:#f2f2f7;--mut:#98989f;--line:#333;--soft:#242426;--warn:#e0b446;--acc:#f2f2f7}
-*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
-html,body{margin:0;padding:0}
-body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",Arial,sans-serif;
-  color:var(--ink);background:var(--bg);font-size:16px;line-height:1.62;-webkit-text-size-adjust:100%}
-.wrap{max-width:860px;margin:0 auto;padding:0 12px 90px}
-
-/* ---- sticky bar: chips + theme toggle ---- */
-.bar{position:sticky;top:0;z-index:50;background:var(--bg);border-bottom:1px solid var(--line)}
-.chips{display:flex;gap:7px;overflow-x:auto;padding:9px 12px 8px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
-.chips::-webkit-scrollbar{display:none}
-.chip{flex:0 0 auto;padding:7px 13px;border-radius:999px;background:var(--soft);border:1px solid var(--line);
-  color:var(--mut);font-size:13px;font-weight:600;text-decoration:none;white-space:nowrap}
-.chip:active{background:var(--card)}
-.switches{display:flex;gap:8px;padding:0 12px 9px;align-items:center}
-.seg{display:flex;background:var(--soft);border:1px solid var(--line);border-radius:10px;padding:3px;gap:2px}
-.seg button{border:0;background:transparent;color:var(--mut);font-size:12px;font-weight:600;
-  padding:6px 10px;border-radius:7px;font-family:inherit;cursor:pointer}
-.seg button[aria-pressed="true"]{background:var(--card);color:var(--ink);box-shadow:0 1px 2px rgba(0,0,0,.12)}
-.seg .dot{margin-left:auto;display:flex;gap:6px}
-.hint{font-size:12px;color:var(--mut);padding:0 12px8px;letter-spacing:.02em}
-.hint b{color:var(--ink);font-weight:600}
-
-/* ---- hero ---- */
-.hero{padding:24px 0 6px}
-.hero .k{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--mut);font-weight:600}
-.hero h1{font-size:28px;line-height:1.2;margin:9px 0 0;letter-spacing:-.02em}
-.hero p{color:var(--mut);font-size:14.5px;margin:9px 0 0;max-width:72ch}
-.meta{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px}
-.meta span{font-size:12px;background:var(--soft);border:1px solid var(--line);border-radius:999px;
-  padding:4px 12px;color:var(--mut);font-weight:600}
-.meta b{color:var(--ink);font-weight:700;font-family:ui-monospace,"SF Mono",Consolas,monospace}
-
-/* ---- section cards ---- */
-.sec{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px 22px;
-  margin:14px 0;box-shadow:0 1px 2px rgba(0,0,0,.05);scroll-margin-top:74px}
-[data-theme="dark"] .sec{box-shadow:none}
-h2{font-size:19px;margin:0 0 4px;letter-spacing:-.01em;display:flex;align-items:center;gap:10px}
-h2::before{content:attr(data-n);font-size:12px;background:var(--acc);color:var(--bg);
-  width:24px;height:24px;border-radius:7px;display:inline-flex;align-items:center;justify-content:center;
-  flex:0 0 24px;font-weight:700;font-family:ui-monospace,"SF Mono",Consolas,monospace}
-h2 .tag{margin-left:auto;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--mut);
-  border:1px solid var(--line);border-radius:999px;padding:3px 10px;font-weight:600}
-p.lead{color:var(--mut);font-size:14.5px;margin:0 0 12px}
-h3{font-size:15px;margin:20px 08px;letter-spacing:-.01em}
-
-/* ---- tables ---- */
-table{width:100%;border-collapse:collapse;margin:10px 0;font-size:14px}
-th,td{padding:10px 12px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
-th{font-size:11px;text-transform:uppercase;letter-spacing:.04em;color:var(--mut);font-weight:650}
-tr:last-child td{border-bottom:none}
-td.d{color:var(--ink)}
-tr.group td{background:var(--soft);font-weight:700;color:var(--ink)}
-.kbd{font-family:ui-monospace,"SF Mono",Consolas,monospace;font-size:13px;font-weight:650;
-  color:var(--acc);background:var(--soft);border:1px solid var(--line);border-radius:6px;
-  padding:2px 8px;white-space:nowrap}
-code{font-family:ui-monospace,"SF Mono",Consolas,monospace;font-size:12.5px;color:var(--ink);
-  background:var(--soft);border:1px solid var(--line);border-radius:6px;padding:2px 8px}
-
-/* ---- workflow steps ---- */
-.flow{display:flex;flex-direction:column;gap:0;margin:14px 0}
-.node{background:var(--soft);border:1px solid var(--line);border-radius:11px;padding:12px 14px;font-size:14px}
-.node b{display:block;font-size:13px;margin-bottom:2px}
-.node .kbd{font-size:12.5px}
-.arrow{text-align:center;color:var(--mut);font-size:15px;line-height:1.1;padding:3px 0}
-
-/* ---- callout ---- */
-.note{background:var(--soft);border:1px solid var(--line);border-left:3px solid var(--warn);
-  border-radius:0 10px 10px 0;padding:12px 14px;font-size:14px;margin:13px 0;color:var(--ink)}
-.note b{color:var(--warn)}
-
-ul,ol{padding-left:20px;margin:8px 0}
-li{margin:4px 0}
-.foot{margin-top:34px;padding-top:16px;border-top:1px solid var(--line);color:var(--mut);font-size:12.5px}
-
-@media(max-width:420px){body{font-size:15.5px}.hero h1{font-size:23px}}
-</style>
+<link rel="stylesheet" href="design/tokens.css">
+<link rel="stylesheet" href="design/base.css">
 </head>
 <body>
 <div class="bar">
   <div class="chips">
     <a class="chip" href="#o1">Окна</a><a class="chip" href="#o2">Разметка</a><a class="chip" href="#o3">Столы</a>
     <a class="chip" href="#o4">Запуск</a><a class="chip" href="#o5">Workflow</a><a class="chip" href="#o6">Редактор</a>
-    <a class="chip" href="#o7">Скролл</a><a class="chip" href="#o8">Скриншоты</a><a class="chip" href="#o9">Настроить</a>
+    <a class="chip" href="#o7">Скролл</a><a class="chip" href="#o8">Скриншоты</a>
+    <a class="chip" href="#o9">Настроить</a><a class="chip" href="#o10">Машина</a><a class="chip" href="#o11">Материалы</a>
   </div>
   <div class="switches">
-    <div class="hint" style="padding:0 6px 00">светлая / тёмная</div>
     <div class="seg" role="group" aria-label="Тема">
-      <button data-t="light" aria-pressed="true">☀︎</button>
-      <button data-t="dark" aria-pressed="false">☾</button>
+      <button data-t="light" aria-pressed="true">☀︎ светлая</button>
+      <button data-t="dark" aria-pressed="false">☾ тёмная</button>
     </div>
   </div>
-  <div class="hint">Дизайн — оформление «карточки» из репозитория <b>memory · npotehin</b>. Значения сняты с живой системы через <code>gsettings</code>.</div>
+  <div class="hint">Стиль «Тёплая бумага» · токены в <code>design/tokens.css</code> · данные — <code>gsettings</code></div>
 </div>
 
 <div class="wrap">
 <div class="hero">
-  <div class="k">Справочник · версия1</div>
+  <div class="k">Справочник · версия 2</div>
   <h1>Навигация на клавиатуре в Cinnamon</h1>
-  <p>Все сочетания сняты с живой системы (Debian 13 «trixie», Cinnamon 6.4.1, X11) через <code>gsettings</code>, а не из общих списков. Клавиша <b>Super</b> — это «Windows»/Meta. Цель — чтобы для повседневной работы мышь не понадобилась.</p>
+  <p>Сочетания сняты с живой системы (Debian 13 «trixie», Cinnamon 6.4.1, X11) через <code>gsettings</code>, а не из общих списков. Клавиша <b>Super</b> — это «Windows»/Meta. Цель — чтобы для повседневной работы мышь не понадобилась.</p>
   <div class="meta">
     <span>Терминал: <b>gnome-terminal</b></span>
     <span>Раскладка: <b>Alt+Shift</b></span>
@@ -232,15 +155,82 @@ li{margin:4px 0}
   <div class="note"><b>Графический путь:</b> Меню → Параметры → Клавиатура → вкладки «Окна» и «Комбинации клавиш». Там же — собственные (custom) сочетания.</div>
 </div>
 
-<div class="foot">Значения сняты с живой системы (gsettings) 2026-11-27 · Cinnamon6.4.10 · Debian 13 «trixie» · X11.<br>
-Оформление — «карточки» из репозитория memory · npotehin. Открывается офлайн двойным кликом.</div>
+<div class="sec" id="o10">
+  <h2 data-n="10">Привязка к машине: где это лежит и как проверить <span class="tag">система</span></h2>
+  <p class="lead">Справочник — не абстрактный список, а снимок конкретной машины. Ниже — что именно связывает страницу с железом и где смотреть.</p>
+
+  <h3>Что за система</h3>
+  <table>
+    <tr><th>Параметр</th><th>Значение</th><th>Чем проверить</th></tr>
+    <tr><td class="d">Дистрибутив</td><td class="d">Debian 13 «trixie»</td><td><code>cat /etc/os-release</code></td></tr>
+    <tr><td class="d">Рабочий стол</td><td class="d">Cinnamon 6.4.10</td><td><code>cinnamon --version</code></td></tr>
+    <tr><td class="d">Графика</td><td class="d">X11</td><td><code>echo $XDG_SESSION_TYPE</code></td></tr>
+    <tr><td class="d">Сессия</td><td class="d">lightdm-xsession</td><td><code>echo $DESKTOP_SESSION</code></td></tr>
+    <tr><td class="d">Терминал</td><td class="d">gnome-terminal</td><td><code>gsettings get org.cinnamon.desktop.default-applications.terminal exec</code></td></tr>
+    <tr><td class="d">Раскладка</td><td class="d">grp:alt_shift_toggle</td><td><code>setxkbmap -query</code></td></tr>
+  </table>
+
+  <h3>Где хранятся настройки</h3>
+  <table>
+    <tr><th>Что</th><th>Где</th><th>Как читать</th></tr>
+    <tr><td class="d">Все настройки Cinnamon и WM</td><td class="d"><code>~/.config/dconf/user</code> (двоичная база)</td><td><code>dconf dump /org/cinnamon/</code></td></tr>
+    <tr><td class="d">Хоткеи оконного менеджера</td><td class="d">схемы gsettings</td><td><code>dconf dump /org/gnome/desktop/wm/keybindings/</code></td></tr>
+    <tr><td class="d">Темы, расширения, апплеты</td><td class="d"><code>~/.local/share/cinnamon/</code>, <code>~/.themes/</code></td><td><code>ls ~/.local/share/cinnamon</code></td></tr>
+    <tr><td class="d">Логи сессии</td><td class="d"><code>~/.xsession-errors</code></td><td><code>tail ~/.xsession-errors</code></td></tr>
+  </table>
+
+  <h3>Найти клавишу и переназначить</h3>
+  <table>
+    <tr><th>Задача</th><th>Команда</th></tr>
+    <tr><td class="d">Узнать код/имя нажатой клавиши</td><td><code>xev</code> — жми клавишу, смотри в выводе</td></tr>
+    <tr><td class="d">Прочитать одно сочетание</td><td><code>gsettings get org.cinnamon.desktop.keybindings.wm close</code></td></tr>
+    <tr><td class="d">Записать своё</td><td><code>gsettings set org.cinnamon.desktop.keybindings.wm close "['&lt;Super&gt;q']"</code></td></tr>
+    <tr><td class="d">Следить за изменениями вживую</td><td><code>dconf watch /</code> — меняй в настройках, видно что пишется</td></tr>
+    <tr><td class="d">Сохранить снимок настроек</td><td><code>dconf dump /org/cinnamon/ &gt; cinnamon-backup.ini</code></td></tr>
+    <tr><td class="d">Вернуть из снимка</td><td><code>dconf load /org/cinnamon/ &lt; cinnamon-backup.ini</code></td></tr>
+  </table>
+
+  <div class="note"><b>Осторожно с <code>dconf load</code>:</b> он перезаписывает раздел целиком. Сначала сделай <code>dconf dump</code> — это и есть резервная копия.</div>
+</div>
+
+<div class="sec" id="o11">
+  <h2 data-n="11">Материалы: что читать и где брать <span class="tag">ссылки</span></h2>
+  <p class="lead">Официальные источники и локальные справочники. Локальные открываются без сети.</p>
+  <table>
+    <tr><th>Тема</th><th>Источник</th><th>Тип</th></tr>
+    <tr><td class="d">Debian: установка, пакеты, релизы</td><td><a href="https://www.debian.org/">debian.org</a></td><td class="d">сайт</td></tr>
+    <tr><td class="d">Cinnamon: проект и исходники</td><td><a href="https://github.com/linuxmint/Cinnamon">github.com/linuxmint/Cinnamon</a></td><td class="d">репозиторий</td></tr>
+    <tr><td class="d">Cinnamon: настройки и темы</td><td><a href="https://linuxmint.com/">linuxmint.com</a></td><td class="d">сайт</td></tr>
+    <tr><td class="d">gsettings: как работает</td><td><code>man gsettings</code></td><td class="d">man</td></tr>
+    <tr><td class="d">dconf: база настроек</td><td><code>man dconf</code></td><td class="d">man</td></tr>
+    <tr><td class="d">xev: коды клавиш</td><td><code>man xev</code></td><td class="d">man</td></tr>
+    <tr><td class="d">setxkbmap: раскладки</td><td><code>man setxkbmap</code></td><td class="d">man</td></tr>
+    <tr><td class="d">Список всех схем</td><td><code>gsettings list-schemas</code></td><td class="d">команда</td></tr>
+  </table>
+
+  <h3>Готовые наборы сочетаний</h3>
+  <ul>
+    <li><b>Настройки → Клавиатура</b> — вкладки «Окна», «Комбинации клавиш», «Специальные возможности».</li>
+    <li><b>Настройки → Окна</b> — поведение окон, причаливание, фокус.</li>
+    <li><b>Настройки → Оформление</b> — темы, иконки, курсоры.</li>
+    <li><b>Настройки → Расширения и апплеты</b> — добавляют свои сочетания.</li>
+  </ul>
+
+  <div class="note"><b>Как искать самому:</b> <code>gsettings list-recursively | grep -i &lt;слово&gt;</code> — например <code>grep -i workspace</code>. Это надёжнее, чем помнить десятки имён схем.</div>
+</div>
+
+<div class="foot">Данные сняты с живой системы (gsettings) 2026-11-27 · Cinnamon 6.4.10 · Debian 13 «trixie» · X11.<br>
+Стиль «Тёплая бумага»: <a href="design/gallery.html">галерея токенов</a> · <a href="README.md">как переиспользовать</a> · открывается офлайн.</div>
 </div>
 
 <script>
 const root = document.documentElement;
-function setTheme(t){ root.dataset.theme = t;
-  document.querySelectorAll('[data-t]').forEach(b=>b.setAttribute('aria-pressed', b.dataset.t===t)); }
-document.querySelectorAll('[data-t]').forEach(b=>b.onclick=()=>setTheme(b.dataset.t));
+function setTheme(t){
+  root.dataset.theme = t;
+  document.querySelectorAll('[data-t]').forEach(b =>
+    b.setAttribute('aria-pressed', b.dataset.t === t));
+}
+document.querySelectorAll('[data-t]').forEach(b => b.onclick = () => setTheme(b.dataset.t));
 setTheme('light');
 </script>
 </body>
