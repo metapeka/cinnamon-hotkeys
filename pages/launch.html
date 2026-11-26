@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ru" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#f4f2ee">
+<title>Запуск и мелочи · Cinnamon</title>
+<link rel="stylesheet" href="../design/tokens.css">
+<link rel="stylesheet" href="../design/base.css">
+</head>
+<body>
+<div class="bar">
+  <div class="chips"><a class="chip" href="../index.html">← Все разделы</a><a class="chip" href="#o4">Запуск</a><a class="chip" href="#o8">Скриншоты</a></div>
+  <div class="switches">
+    <div class="seg" role="group" aria-label="Тема">
+      <button data-t="light" aria-pressed="true">☀︎ светлая</button>
+      <button data-t="dark" aria-pressed="false">☾ тёмная</button>
+    </div>
+  </div>
+</div>
+
+<div class="wrap">
+<div class="hero">
+  <div class="k">Энциклопедия · Cinnamon · Debian 13</div>
+  <h1>Запуск и мелочи</h1>
+  <p>Программы, терминал, скриншоты — всё без мыши.</p>
+</div>
+<div class="keys">
+    <span class="keycap">Alt+F2<small>запуск</small></span>
+    <span class="keycap">Ctrl+Alt+T<small>терминал</small></span>
+    <span class="keycap">Super<small>меню</small></span>
+    <span class="keycap">Print<small>снимок</small></span>
+  </div>
+<div class="sec" id="o4">
+  <h2 data-n="4">Запуск приложений без мыши <span class="tag">launcher</span></h2>
+  <div class="tablewrap"><table>
+    <tr><th>Действие</th><th>Сочетание</th><th>Примечание</th></tr>
+    <tr><td class="d">Диалог запуска команды</td><td><span class="kbd">Alt+F2</span></td><td class="d">Введи имя → Enter. Tab — автодополнение пути.</td></tr>
+    <tr class="group"><td colspan="3">Быстрый запуск</td></tr>
+    <tr><td class="d">Открыть терминал</td><td><span class="kbd">Ctrl+Alt+t</span></td><td class="d">gnome-terminal.</td></tr>
+    <tr><td class="d">Главное меню (поиск)</td><td><span class="kbd">Super</span></td><td class="d">Набирай имя приложения сразу.</td></tr>
+    <tr><td class="d">Файловый менеджер</td><td><span class="kbd">Super+e</span></td><td class="d"></td></tr>
+    <tr><td class="d">Переключение раскладки</td><td><span class="kbd">Alt+Shift</span></td><td class="d">xkb grp:alt_shift_toggle.</td></tr>
+    <tr><td class="d">Перезапустить Cinnamon</td><td><span class="kbd">Ctrl+Alt+Esc</span></td><td class="d">Быстрый сброс оболочки.</td></tr>
+    <tr><td class="d">Блокировка экрана</td><td><span class="kbd">Ctrl+Alt+l</span></td><td class="d"></td></tr>
+  </table></div>
+</div>
+<div class="sec" id="o8">
+  <h2 data-n="8">Скриншоты и прочее <span class="tag">без мыши</span></h2>
+  <div class="tablewrap"><table>
+    <tr><th>Действие</th><th>Сочетание</th></tr>
+    <tr><td class="d">Весь экран / окно / область</td><td><span class="kbd">Print</span> / <span class="kbd">Alt+Print</span> / <span class="kbd">Shift+Print</span></td></tr>
+    <tr><td class="d">Снимок в буфер обмена</td><td><span class="kbd">Ctrl+Print</span> · <span class="kbd">Ctrl+Alt+Print</span></td></tr>
+    <tr><td class="d">Громкость / яркость</td><td>XF86Audio… / XF86MonBrightness…</td></tr>
+  </table></div>
+</div>
+<div class="pager"><a class="prev" href="work.html"><span class="dir">← Назад</span>Рабочий сценарий</a><a class="next" href="machine.html"><span class="dir">Дальше →</span>Настройка и машина</a></div>
+<div class="foot">Данные сняты с живой системы (gsettings) 2026-11-27 · Cinnamon 6.4.10 · Debian 13 «trixie» · X11.<br>
+<a href="../index.html">Все разделы</a> · <a href="../hotkeys.html">Полный справочник</a> · <a href="../design/gallery.html">Галерея токенов</a></div>
+</div>
+<script>
+const root = document.documentElement;
+function setTheme(t){
+  root.dataset.theme = t;
+  document.querySelectorAll('[data-t]').forEach(b =>
+    b.setAttribute('aria-pressed', b.dataset.t === t));
+}
+document.querySelectorAll('[data-t]').forEach(b => b.onclick = () => setTheme(b.dataset.t));
+setTheme('light');
+</script>
+</body>
+</html>

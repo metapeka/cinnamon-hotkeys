@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ru" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#f4f2ee">
+<title>Настройка и машина · Cinnamon</title>
+<link rel="stylesheet" href="../design/tokens.css">
+<link rel="stylesheet" href="../design/base.css">
+</head>
+<body>
+<div class="bar">
+  <div class="chips"><a class="chip" href="../index.html">← Все разделы</a><a class="chip" href="#o9">Настройка</a><a class="chip" href="#o10">Машина</a></div>
+  <div class="switches">
+    <div class="seg" role="group" aria-label="Тема">
+      <button data-t="light" aria-pressed="true">☀︎ светлая</button>
+      <button data-t="dark" aria-pressed="false">☾ тёмная</button>
+    </div>
+  </div>
+</div>
+
+<div class="wrap">
+<div class="hero">
+  <div class="k">Энциклопедия · Cinnamon · Debian 13</div>
+  <h1>Настройка и машина</h1>
+  <p>Свои сочетания, где лежат настройки и как всё это связано с этой системой.</p>
+</div>
+
+<div class="sec" id="o9">
+  <h2 data-n="9">Как это настроено у тебя и как менять <span class="tag">gsettings</span></h2>
+  <p class="lead">Все значения выше — фактические настройки твоей системы. Проверить или поменять в терминале:</p>
+  <div class="tablewrap"><table>
+    <tr><th>Команда</th><th>Что отдаёт</th></tr>
+    <tr><td class="d"><code>gsettings list-recursively org.cinnamon.desktop.keybindings.wm</code></td><td class="d">WM-хоткеи: окна, столы, мониторы.</td></tr>
+    <tr><td class="d"><code>gsettings list-recursively org.gnome.desktop.wm.keybindings</code></td><td class="d">Дублирующая схема (Cinnamon читает обе).</td></tr>
+    <tr><td class="d"><code>gsettings list-recursively org.cinnamon.desktop.keybindings.media-keys</code></td><td class="d">Терминал, скриншоты, звук, запуск.</td></tr>
+  </table></div>
+  <div class="note"><b>Графический путь:</b> Меню → Параметры → Клавиатура → вкладки «Окна» и «Комбинации клавиш». Там же — собственные (custom) сочетания.</div>
+</div>
+<div class="sec" id="o10">
+  <h2 data-n="10">Привязка к машине: где это лежит и как проверить <span class="tag">система</span></h2>
+  <p class="lead">Справочник — не абстрактный список, а снимок конкретной машины. Ниже — что именно связывает страницу с железом и где смотреть.</p>
+
+  <h3>Что за система</h3>
+  <div class="tablewrap"><table>
+    <tr><th>Параметр</th><th>Значение</th><th>Чем проверить</th></tr>
+    <tr><td class="d">Дистрибутив</td><td class="d">Debian 13 «trixie»</td><td><code>cat /etc/os-release</code></td></tr>
+    <tr><td class="d">Рабочий стол</td><td class="d">Cinnamon 6.4.10</td><td><code>cinnamon --version</code></td></tr>
+    <tr><td class="d">Графика</td><td class="d">X11</td><td><code>echo $XDG_SESSION_TYPE</code></td></tr>
+    <tr><td class="d">Сессия</td><td class="d">lightdm-xsession</td><td><code>echo $DESKTOP_SESSION</code></td></tr>
+    <tr><td class="d">Терминал</td><td class="d">gnome-terminal</td><td><code>gsettings get org.cinnamon.desktop.default-applications.terminal exec</code></td></tr>
+    <tr><td class="d">Раскладка</td><td class="d">grp:alt_shift_toggle</td><td><code>setxkbmap -query</code></td></tr>
+  </table></div>
+
+  <h3>Где хранятся настройки</h3>
+  <div class="tablewrap"><table>
+    <tr><th>Что</th><th>Где</th><th>Как читать</th></tr>
+    <tr><td class="d">Все настройки Cinnamon и WM</td><td class="d"><code>~/.config/dconf/user</code> (двоичная база)</td><td><code>dconf dump /org/cinnamon/</code></td></tr>
+    <tr><td class="d">Хоткеи оконного менеджера</td><td class="d">схемы gsettings</td><td><code>dconf dump /org/gnome/desktop/wm/keybindings/</code></td></tr>
+    <tr><td class="d">Темы, расширения, апплеты</td><td class="d"><code>~/.local/share/cinnamon/</code>, <code>~/.themes/</code></td><td><code>ls ~/.local/share/cinnamon</code></td></tr>
+    <tr><td class="d">Логи сессии</td><td class="d"><code>~/.xsession-errors</code></td><td><code>tail ~/.xsession-errors</code></td></tr>
+  </table></div>
+
+  <h3>Найти клавишу и переназначить</h3>
+  <div class="tablewrap"><table>
+    <tr><th>Задача</th><th>Команда</th></tr>
+    <tr><td class="d">Узнать код/имя нажатой клавиши</td><td><code>xev</code> — жми клавишу, смотри в выводе</td></tr>
+    <tr><td class="d">Прочитать одно сочетание</td><td><code>gsettings get org.cinnamon.desktop.keybindings.wm close</code></td></tr>
+    <tr><td class="d">Записать своё</td><td><code>gsettings set org.cinnamon.desktop.keybindings.wm close "['&lt;Super&gt;q']"</code></td></tr>
+    <tr><td class="d">Следить за изменениями вживую</td><td><code>dconf watch /</code> — меняй в настройках, видно что пишется</td></tr>
+    <tr><td class="d">Сохранить снимок настроек</td><td><code>dconf dump /org/cinnamon/ &gt; cinnamon-backup.ini</code></td></tr>
+    <tr><td class="d">Вернуть из снимка</td><td><code>dconf load /org/cinnamon/ &lt; cinnamon-backup.ini</code></td></tr>
+  </table></div>
+
+  <div class="note"><b>Осторожно с <code>dconf load</code>:</b> он перезаписывает раздел целиком. Сначала сделай <code>dconf dump</code> — это и есть резервная копия.</div>
+</div>
+<div class="pager"><a class="prev" href="launch.html"><span class="dir">← Назад</span>Запуск и мелочи</a><a class="next" href="materials.html"><span class="dir">Дальше →</span>Материалы</a></div>
+<div class="foot">Данные сняты с живой системы (gsettings) 2026-11-27 · Cinnamon 6.4.10 · Debian 13 «trixie» · X11.<br>
+<a href="../index.html">Все разделы</a> · <a href="../hotkeys.html">Полный справочник</a> · <a href="../design/gallery.html">Галерея токенов</a></div>
+</div>
+<script>
+const root = document.documentElement;
+function setTheme(t){
+  root.dataset.theme = t;
+  document.querySelectorAll('[data-t]').forEach(b =>
+    b.setAttribute('aria-pressed', b.dataset.t === t));
+}
+document.querySelectorAll('[data-t]').forEach(b => b.onclick = () => setTheme(b.dataset.t));
+setTheme('light');
+</script>
+</body>
+</html>

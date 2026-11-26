@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ru" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#f4f2ee">
+<title>Окна и раскладка · Cinnamon</title>
+<link rel="stylesheet" href="../design/tokens.css">
+<link rel="stylesheet" href="../design/base.css">
+</head>
+<body>
+<div class="bar">
+  <div class="chips"><a class="chip" href="../index.html">← Все разделы</a><a class="chip" href="#o1">Окна</a><a class="chip" href="#o2">Разметка</a><a class="chip" href="#o3">Столы</a></div>
+  <div class="switches">
+    <div class="seg" role="group" aria-label="Тема">
+      <button data-t="light" aria-pressed="true">☀︎ светлая</button>
+      <button data-t="dark" aria-pressed="false">☾ тёмная</button>
+    </div>
+  </div>
+</div>
+
+<div class="wrap">
+<div class="hero">
+  <div class="k">Энциклопедия · Cinnamon · Debian 13</div>
+  <h1>Окна и раскладка</h1>
+  <p>Как переключаться между окнами, делить экран пополам и раскладывать всё по рабочим столам.</p>
+</div>
+
+<div class="sec" id="o1">
+  <h2 data-n="1">Окна: переключение между терминалом и редактором <span class="tag">главное</span></h2>
+  <p class="lead">Пишешь код в терминале → смотришь результат в редакторе → возвращаешься. Одна рука, без мыши.</p>
+  <div class="tablewrap"><table>
+    <tr><th>Действие</th><th>Сочетание</th><th>Примечание</th></tr>
+    <tr><td class="d">Переключение окон (Alt-Tab)</td><td><span class="kbd">Alt+Tab</span></td><td class="d">Отпусти сразу — предыдущее окно. Удерживай и веди Tab для перебора.</td></tr>
+    <tr><td class="d">В обратном порядке</td><td><span class="kbd">Shift+Alt+Tab</span></td><td class="d"></td></tr>
+    <tr><td class="d">Только окна текущего стола</td><td><span class="kbd">Ctrl+Alt+Tab</span></td><td class="d">Не трогает панели и апплеты.</td></tr>
+    <tr><td class="d">Свернуть окно</td><td><span class="kbd">Super+h</span></td><td class="d"></td></tr>
+    <tr><td class="d">Развернуть / вернуть размер</td><td><span class="kbd">Alt+F10</span> / <span class="kbd">Alt+F5</span></td><td class="d">Вернуть размер также <span class="kbd">Super+↓</span>.</td></tr>
+    <tr><td class="d">Закрыть окно</td><td><span class="kbd">Alt+F4</span></td><td class="d"></td></tr>
+  </table></div>
+</div>
+<div class="sec" id="o2">
+  <h2 data-n="2">Разложить терминал и редактор на пол-экрана <span class="tag">разметка</span></h2>
+  <p class="lead">Не переключайся между окнами — поставь их рядом. Взгляд перескакивает сам, фокус наводишь клавишей.</p>
+  <div class="tablewrap"><table>
+    <tr><th>Действие</th><th>Сочетание</th><th>Примечание</th></tr>
+    <tr class="group"><td colspan="3">Причаливание (tile) и размеры</td></tr>
+    <tr><td class="d">Слева / справа — половина экрана</td><td><span class="kbd">Super+←</span> / <span class="kbd">Super+→</span></td><td class="d">То же в muffin (оконный менеджер).</td></tr>
+    <tr><td class="d">Развернуть / восстановить</td><td><span class="kbd">Super+↑</span> / <span class="kbd">Super+↓</span></td><td class="d">Super+↓ = unmaximize.</td></tr>
+    <tr><td class="d">Скрыть все окна (рабочий стол)</td><td><span class="kbd">Super+d</span></td><td class="d">Повтор — вернуть окна.</td></tr>
+    <tr><td class="d">Окно на соседний монитор</td><td><span class="kbd">Super+Shift+←/→/↑/↓</span></td><td class="d"></td></tr>
+    <tr><td class="d">Меню окна / переместить / размер</td><td><span class="kbd">Alt+Space</span> / <span class="kbd">Alt+F7</span> / <span class="kbd">Alt+F8</span></td><td class="d">Стрелки двигают, Enter отпускает.</td></tr>
+  </table></div>
+</div>
+<div class="sec" id="o3">
+  <h2 data-n="3">Виртуальные рабочие столы <span class="tag">workspaces</span></h2>
+  <p class="lead">Терминал на одном столе, редактор на другом — отдельное пространство под каждый контекст.</p>
+  <div class="tablewrap"><table>
+    <tr><th>Действие</th><th>Сочетание</th><th>Примечание</th></tr>
+    <tr><td class="d">Стол влево / вправо</td><td><span class="kbd">Ctrl+Alt+←</span> / <span class="kbd">Ctrl+Alt+→</span></td><td class="d"></td></tr>
+    <tr><td class="d">Стол вверх / вниз</td><td><span class="kbd">Ctrl+Alt+↑</span> / <span class="kbd">Ctrl+Alt+↓</span></td><td class="d">Нет стола «вниз» — Cinnamon создаст его.</td></tr>
+    <tr><td class="d">На 1-й / последний стол</td><td><span class="kbd">Super+Home</span> / <span class="kbd">Super+End</span></td><td class="d">Переключение на 2–12 пустое по умолчанию.</td></tr>
+    <tr><td class="d">Перенести окно на соседний стол</td><td><span class="kbd">Ctrl+Shift+Alt+←/→/↑/↓</span></td><td class="d">Стол и окно одним аккордом.</td></tr>
+    <tr><td class="d">Перенести окно на 1-й / последний</td><td><span class="kbd">Super+Shift+Home</span> / <span class="kbd">Super+Shift+End</span></td><td class="d"></td></tr>
+  </table></div>
+</div>
+<div class="pager"><a class="empty" href="#"></a><a class="next" href="work.html"><span class="dir">Дальше →</span>Рабочий сценарий</a></div>
+<div class="foot">Данные сняты с живой системы (gsettings) 2026-11-27 · Cinnamon 6.4.10 · Debian 13 «trixie» · X11.<br>
+<a href="../index.html">Все разделы</a> · <a href="../hotkeys.html">Полный справочник</a> · <a href="../design/gallery.html">Галерея токенов</a></div>
+</div>
+<script>
+const root = document.documentElement;
+function setTheme(t){
+  root.dataset.theme = t;
+  document.querySelectorAll('[data-t]').forEach(b =>
+    b.setAttribute('aria-pressed', b.dataset.t === t));
+}
+document.querySelectorAll('[data-t]').forEach(b => b.onclick = () => setTheme(b.dataset.t));
+setTheme('light');
+</script>
+</body>
+</html>

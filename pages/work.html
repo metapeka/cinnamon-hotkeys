@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ru" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#f4f2ee">
+<title>Рабочий сценарий · Cinnamon</title>
+<link rel="stylesheet" href="../design/tokens.css">
+<link rel="stylesheet" href="../design/base.css">
+</head>
+<body>
+<div class="bar">
+  <div class="chips"><a class="chip" href="../index.html">← Все разделы</a><a class="chip" href="#o5">Сценарий</a><a class="chip" href="#o6">Редактор</a><a class="chip" href="#o7">Скролл</a></div>
+  <div class="switches">
+    <div class="seg" role="group" aria-label="Тема">
+      <button data-t="light" aria-pressed="true">☀︎ светлая</button>
+      <button data-t="dark" aria-pressed="false">☾ тёмная</button>
+    </div>
+  </div>
+</div>
+
+<div class="wrap">
+<div class="hero">
+  <div class="k">Энциклопедия · Cinnamon · Debian 13</div>
+  <h1>Рабочий сценарий</h1>
+  <p>Терминал ↔ редактор: переключение, встроенный терминал IDE и прокрутка кода.</p>
+</div>
+
+<div class="sec" id="o5">
+  <h2 data-n="5">Готовый workflow: терминал ↔ код <span class="tag">сценарий</span></h2>
+  <p class="lead">Одна подобранная раскладка под твой случай. Отрабатывай именно её — не распыляйся на остальные.</p>
+  <div class="flow">
+    <div class="node"><b>1 · Разложи два окна</b>Редактор и терминал. Каждому — <span class="kbd">Super+←</span> и <span class="kbd">Super+→</span>: терминал слева, код справа.</div>
+    <div class="arrow">↓</div>
+    <div class="node"><b>2 · Пиши в терминале</b>Нужен результат — <span class="kbd">Alt+Tab</span> (отпусти сразу) перескочит в редактор.</div>
+    <div class="arrow">↓</div>
+    <div class="node"><b>3 · Скролль код</b><span class="kbd">PgUp</span>/<span class="kbd">PgDn</span>, к началу/концу файла — <span class="kbd">Ctrl+Home</span>/<span class="kbd">Ctrl+End</span>.</div>
+    <div class="arrow">↓</div>
+    <div class="node"><b>4 · Обратно в терминал</b>Снова <span class="kbd">Alt+Tab</span> — вернёт в то же место ввода.</div>
+  </div>
+  <div class="note"><b>Если окна мешают друг другу:</b> вместо Alt+Tab разведи их по двум столам (<span class="kbd">Ctrl+Alt+←/→</span>) и держи фокус на «своём». Сплиты не накладываются.</div>
+</div>
+<div class="sec" id="o6">
+  <h2 data-n="6">Внутри редактора / IDE <span class="tag">проверить у себя</span></h2>
+  <p class="lead">Это не Cinnamon, а сами программы — то, что чаще всего нужно при чтении кода. Точные сочетания зависят от твоего редактора.</p>
+  <div class="tablewrap"><table>
+    <tr><th>Действие</th><th>VS Code / Codium</th><th>IntelliJ / PyCharm</th><th>Neovim / Vim</th></tr>
+    <tr><td class="d">Встроенный терминал</td><td><span class="kbd">Ctrl+`</span></td><td><span class="kbd">Alt+F12</span></td><td><span class="kbd">:term</span> → <span class="kbd">Ctrl+\ Ctrl+n</span></td></tr>
+    <tr><td class="d">Вернуться из терминала в код</td><td><span class="kbd">Ctrl+`</span></td><td><span class="kbd">Alt+F12</span></td><td><span class="kbd">Ctrl+w</span> → h/j/k/l</td></tr>
+    <tr><td class="d">Переключение файлов</td><td><span class="kbd">Ctrl+Tab</span></td><td><span class="kbd">Ctrl+Tab</span></td><td>:bnext / :bprev</td></tr>
+    <tr><td class="d">К строке / по проекту</td><td><span class="kbd">Ctrl+g</span> / <span class="kbd">Ctrl+Shift+f</span></td><td><span class="kbd">Ctrl+g</span> / <span class="kbd">Ctrl+Shift+f</span></td><td>:42 / /pattern</td></tr>
+    <tr><td class="d">Начало / конец файла</td><td><span class="kbd">Ctrl+Home</span> / <span class="kbd">Ctrl+End</span></td><td><span class="kbd">Ctrl+Home</span> / <span class="kbd">Ctrl+End</span></td><td>gg / G</td></tr>
+  </table></div>
+  <div class="note"><b>Проверь в настройках своего редактора</b> — там же «терминал» можно повесить на самое удобное тебе сочетание.</div>
+</div>
+<div class="sec" id="o7">
+  <h2 data-n="7">Скролл самого терминала <span class="tag">gnome-terminal</span></h2>
+  <div class="tablewrap"><table>
+    <tr><th>Действие</th><th>Сочетание</th><th>Примечание</th></tr>
+    <tr><td class="d">Страница вверх / вниз</td><td><span class="kbd">Shift+PgUp</span> / <span class="kbd">Shift+PgDn</span></td><td class="d">Длинный вывод, логи, --help.</td></tr>
+    <tr><td class="d">Построчная прокрутка</td><td><span class="kbd">Ctrl+Shift+↑</span> / <span class="kbd">Ctrl+Shift+↓</span></td><td class="d">В некоторых терминалах иначе.</td></tr>
+    <tr><td class="d">К началу / концу вывода</td><td><span class="kbd">Shift+Home</span> / <span class="kbd">Shift+End</span></td><td class="d"></td></tr>
+    <tr><td class="d">Поиск по выводу</td><td><span class="kbd">Ctrl+Shift+f</span></td><td class="d">Только gnome-terminal.</td></tr>
+  </table></div>
+</div>
+<div class="pager"><a class="prev" href="windows.html"><span class="dir">← Назад</span>Окна и раскладка</a><a class="next" href="launch.html"><span class="dir">Дальше →</span>Запуск и мелочи</a></div>
+<div class="foot">Данные сняты с живой системы (gsettings) 2026-11-27 · Cinnamon 6.4.10 · Debian 13 «trixie» · X11.<br>
+<a href="../index.html">Все разделы</a> · <a href="../hotkeys.html">Полный справочник</a> · <a href="../design/gallery.html">Галерея токенов</a></div>
+</div>
+<script>
+const root = document.documentElement;
+function setTheme(t){
+  root.dataset.theme = t;
+  document.querySelectorAll('[data-t]').forEach(b =>
+    b.setAttribute('aria-pressed', b.dataset.t === t));
+}
+document.querySelectorAll('[data-t]').forEach(b => b.onclick = () => setTheme(b.dataset.t));
+setTheme('light');
+</script>
+</body>
+</html>

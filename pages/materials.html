@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ru" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#f4f2ee">
+<title>Материалы · Cinnamon</title>
+<link rel="stylesheet" href="../design/tokens.css">
+<link rel="stylesheet" href="../design/base.css">
+</head>
+<body>
+<div class="bar">
+  <div class="chips"><a class="chip" href="../index.html">← Все разделы</a><a class="chip" href="#o11">Материалы</a></div>
+  <div class="switches">
+    <div class="seg" role="group" aria-label="Тема">
+      <button data-t="light" aria-pressed="true">☀︎ светлая</button>
+      <button data-t="dark" aria-pressed="false">☾ тёмная</button>
+    </div>
+  </div>
+</div>
+
+<div class="wrap">
+<div class="hero">
+  <div class="k">Энциклопедия · Cinnamon · Debian 13</div>
+  <h1>Материалы</h1>
+  <p>Официальные источники и локальные справочники: что читать и где искать.</p>
+</div>
+
+<div class="sec" id="o11">
+  <h2 data-n="11">Материалы: что читать и где брать <span class="tag">ссылки</span></h2>
+  <p class="lead">Официальные источники и локальные справочники. Локальные открываются без сети.</p>
+  <div class="tablewrap"><table>
+    <tr><th>Тема</th><th>Источник</th><th>Тип</th></tr>
+    <tr><td class="d">Debian: установка, пакеты, релизы</td><td><a href="https://www.debian.org/">debian.org</a></td><td class="d">сайт</td></tr>
+    <tr><td class="d">Cinnamon: проект и исходники</td><td><a href="https://github.com/linuxmint/Cinnamon">github.com/linuxmint/Cinnamon</a></td><td class="d">репозиторий</td></tr>
+    <tr><td class="d">Cinnamon: настройки и темы</td><td><a href="https://linuxmint.com/">linuxmint.com</a></td><td class="d">сайт</td></tr>
+    <tr><td class="d">gsettings: как работает</td><td><code>man gsettings</code></td><td class="d">man</td></tr>
+    <tr><td class="d">dconf: база настроек</td><td><code>man dconf</code></td><td class="d">man</td></tr>
+    <tr><td class="d">xev: коды клавиш</td><td><code>man xev</code></td><td class="d">man</td></tr>
+    <tr><td class="d">setxkbmap: раскладки</td><td><code>man setxkbmap</code></td><td class="d">man</td></tr>
+    <tr><td class="d">Список всех схем</td><td><code>gsettings list-schemas</code></td><td class="d">команда</td></tr>
+  </table></div>
+
+  <h3>Готовые наборы сочетаний</h3>
+  <ul>
+    <li><b>Настройки → Клавиатура</b> — вкладки «Окна», «Комбинации клавиш», «Специальные возможности».</li>
+    <li><b>Настройки → Окна</b> — поведение окон, причаливание, фокус.</li>
+    <li><b>Настройки → Оформление</b> — темы, иконки, курсоры.</li>
+    <li><b>Настройки → Расширения и апплеты</b> — добавляют свои сочетания.</li>
+  </ul>
+
+  <div class="note"><b>Как искать самому:</b> <code>gsettings list-recursively | grep -i &lt;слово&gt;</code> — например <code>grep -i workspace</code>. Это надёжнее, чем помнить десятки имён схем.</div>
+</div>
+<div class="pager"><a class="prev" href="machine.html"><span class="dir">← Назад</span>Настройка и машина</a><a class="next" href="../index.html"><span class="dir">Готово</span>Все разделы</a></div>
+<div class="foot">Данные сняты с живой системы (gsettings) 2026-11-27 · Cinnamon 6.4.10 · Debian 13 «trixie» · X11.<br>
+<a href="../index.html">Все разделы</a> · <a href="../hotkeys.html">Полный справочник</a> · <a href="../design/gallery.html">Галерея токенов</a></div>
+</div>
+<script>
+const root = document.documentElement;
+function setTheme(t){
+  root.dataset.theme = t;
+  document.querySelectorAll('[data-t]').forEach(b =>
+    b.setAttribute('aria-pressed', b.dataset.t === t));
+}
+document.querySelectorAll('[data-t]').forEach(b => b.onclick = () => setTheme(b.dataset.t));
+setTheme('light');
+</script>
+</body>
+</html>

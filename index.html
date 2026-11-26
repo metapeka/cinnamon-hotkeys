@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="ru" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#f4f2ee">
+<title>Cinnamon · Энциклопедия навигации</title>
+<link rel="stylesheet" href="design/tokens.css">
+<link rel="stylesheet" href="design/base.css">
+</head>
+<body>
+<div class="bar">
+  <div class="chips">
+    <a class="chip" href="#scheme">Схема</a>
+    <a class="chip" href="#pages">Разделы</a>
+    <a class="chip" href="hotkeys.html">Полный справочник</a>
+    <a class="chip" href="design/gallery.html">Галерея стиля</a>
+  </div>
+  <div class="switches">
+    <div class="seg" role="group" aria-label="Тема">
+      <button data-t="light" aria-pressed="true">☀︎ светлая</button>
+      <button data-t="dark" aria-pressed="false">☾ тёмная</button>
+    </div>
+  </div>
+</div>
+
+<div class="wrap">
+<div class="hero">
+  <div class="k">Энциклопедия · Debian 13 · Cinnamon 6.4.10</div>
+  <h1>Работа без мыши</h1>
+  <p>Хоткеи, снятые с этой машины, разложены по разделам. Начни со схемы ниже — она объясняет главный сценарий: терминал слева, код справа, переключение одной клавишей.</p>
+  <div class="stats">
+    <div class="stat"><b>11</b><span>разделов</span></div>
+    <div class="stat"><b>40+</b><span>сочетаний</span></div>
+    <div class="stat"><b>3</b><span>схемы gsettings</span></div>
+    <div class="stat"><b>X11</b><span>сессия</span></div>
+  </div>
+</div>
+
+<div class="sec" id="scheme">
+  <h2 data-n="→">Как это выглядит <span class="tag">схема</span></h2>
+  <p class="lead">Два окна на одном экране. Терминал слева, редактор справа. Фокус переключается <span class="kbd">Alt+Tab</span>, а раскладываются окна клавишами <span class="kbd">Super+←</span> и <span class="kbd">Super+→</span>.</p>
+
+  <div class="demo">
+    <div class="demo-win">
+      <div class="bar-top"><i class="dot"></i><i class="dot"></i><i class="dot"></i><span class="title">терминал</span></div>
+      <div class="body">
+        <span class="prompt">$ make run</span><br>
+        <span class="muted">сборка…</span>
+        <span class="line w90"></span>
+        <span class="line w70"></span>
+        <span class="line w50"></span>
+        <span class="muted">> готово</span>
+      </div>
+    </div>
+    <div class="demo-win">
+      <div class="bar-top"><i class="dot"></i><i class="dot"></i><i class="dot"></i><span class="title">редактор</span></div>
+      <div class="body">
+        <span class="line accent w50"></span>
+        <span class="line w90"></span>
+        <span class="line w70"></span>
+        <span class="line accent w30"></span>
+        <span class="line w90"></span>
+        <span class="line w50"></span>
+      </div>
+    </div>
+  </div>
+  <div class="demo-cap"><span class="kbd">Super+←</span><span class="kbd">Super+→</span></div>
+
+  <h3>Переключение</h3>
+  <div class="flow">
+    <div class="node"><b>Терминал</b>пишешь команду, смотришь вывод</div>
+    <div class="arrow">↓ <span class="kbd">Alt+Tab</span> ↓</div>
+    <div class="node"><b>Редактор</b>читаешь и правишь код</div>
+    <div class="arrow">↑ <span class="kbd">Alt+Tab</span> ↑</div>
+    <div class="node"><b>Обратно</b>курсор на том же месте</div>
+  </div>
+  <div class="note"><b>Если два окна мешают:</b> разведи их по двум рабочим столам — <span class="kbd">Ctrl+Alt+←</span> и <span class="kbd">Ctrl+Alt+→</span>.</div>
+</div>
+
+<div class="sec" id="pages">
+  <h2 data-n="1–11">Разделы <span class="tag">оглавление</span></h2>
+  <p class="lead">Пять страниц по темам. Нумерация разделов сквозная — как в полном справочнике.</p>
+
+  <div class="grid">
+    <a class="tile" href="pages/windows.html">
+      <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="8" height="16" rx="1.5"/><rect x="13" y="4" width="8" height="16" rx="1.5"/></svg></div>
+      <div><b>Окна и раскладка</b><span>Переключение, пол-экрана, рабочие столы</span></div>
+      <div class="n">1–3</div>
+    </a>
+    <a class="tile" href="pages/work.html">
+      <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 7l5 5-5 5"/><path d="M12 17h8"/></svg></div>
+      <div><b>Рабочий сценарий</b><span>Терминал ↔ редактор, IDE, скролл кода</span></div>
+      <div class="n">5–7</div>
+    </a>
+    <a class="tile" href="pages/launch.html">
+      <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M6 10h.01M10 10h.01M14 10h.01M18 10h.01M7 14h10"/></svg></div>
+      <div><b>Запуск и мелочи</b><span>Программы, терминал, скриншоты</span></div>
+      <div class="n">4, 8</div>
+    </a>
+    <a class="tile" href="pages/machine.html">
+      <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M19.1 4.9L17 7M7 17l-2.1 2.1"/></svg></div>
+      <div><b>Настройка и машина</b><span>Свои сочетания, dconf, привязка к системе</span></div>
+      <div class="n">9–10</div>
+    </a>
+    <a class="tile" href="pages/materials.html">
+      <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 5.5A2.5 2.5 0 016.5 3H20v15H6.5A2.5 2.5 0 004 20.5z"/><path d="M4 5.5v15"/></svg></div>
+      <div><b>Материалы</b><span>Официальные источники и man-страницы</span></div>
+      <div class="n">11</div>
+    </a>
+    <a class="tile" href="hotkeys.html">
+      <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 4h16v16H4z"/><path d="M8 8h8M8 12h8M8 16h5"/></svg></div>
+      <div><b>Полный справочник</b><span>Все 11 разделов одной страницей</span></div>
+      <div class="n">всё</div>
+    </a>
+    <a class="tile" href="design/gallery.html">
+      <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="7" cy="7" r="3"/><circle cx="17" cy="7" r="3"/><circle cx="7" cy="17" r="3"/><circle cx="17" cy="17" r="3"/></svg></div>
+      <div><b>Галерея стиля</b><span>Токены и компоненты «Тёплая бумага»</span></div>
+      <div class="n">CSS</div>
+    </a>
+  </div>
+
+  <div class="note"><b>Что читать первым:</b> «Окна и раскладка» → «Рабочий сценарий». Остальное — по мере надобности.</div>
+</div>
+
+<div class="sec">
+  <h2 data-n="i">Как устроено <span class="tag">о проекте</span></h2>
+  <p class="lead">Страницы статические: один HTML + два CSS, без сборки и без сети. Открываются двойным кликом.</p>
+  <div class="tablewrap"><table>
+    <tr><th>Слой</th><th>Файл</th><th>Зачем</th></tr>
+    <tr><td class="d">Стиль</td><td><code>design/tokens.css</code></td><td class="d">Цвета, шрифты, отступы. Светлая и тёмная тема</td></tr>
+    <tr><td class="d">Компоненты</td><td><code>design/base.css</code></td><td class="d">Карточки, таблицы, плашки, схемы</td></tr>
+    <tr><td class="d">Страницы</td><td><code>pages/*.html</code></td><td class="d">Разделы 1–11 по темам</td></tr>
+    <tr><td class="d">Полный текст</td><td><code>hotkeys.html</code></td><td class="d">Та же энциклопедия одной страницей</td></tr>
+  </table></div>
+  <div class="note"><b>Данные сняты с живой системы:</b> Debian 13 «trixie», Cinnamon 6.4.10, X11, терминал gnome-terminal.</div>
+</div>
+
+<div class="foot">2026-11-27 · Cinnamon 6.4.10 · Debian 13 «trixie» · X11.<br>
+<a href="README.md">README</a> · <a href="design/gallery.html">галерея токенов</a> · открывается офлайн</div>
+</div>
+
+<script>
+const root = document.documentElement;
+function setTheme(t){
+  root.dataset.theme = t;
+  document.querySelectorAll('[data-t]').forEach(b =>
+    b.setAttribute('aria-pressed', b.dataset.t === t));
+}
+document.querySelectorAll('[data-t]').forEach(b => b.onclick = () => setTheme(b.dataset.t));
+setTheme('light');
+</script>
+</body>
+</html>
